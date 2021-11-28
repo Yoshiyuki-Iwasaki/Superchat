@@ -1,11 +1,11 @@
 import React from 'react'
+import { supabase } from "../util/supabase";
 
-const PostDetail = ({ showData }) => {
-  console.log("showData", showData);
+const PostDetail = ({ postsData }) => {
   return (
-    <div>
-      {showData.name.first} {showData.name.last}
-    </div>
+    <>
+      <p>{postsData.message}</p>
+    </>
   );
 };
 
@@ -13,14 +13,12 @@ export default PostDetail;
 
 export async function getServerSideProps(context) {
   const { id } = context.query;
-  const res = await fetch("https://randomuser.me/api?results=20");
-  const data = await res.json();
-  const showData = data.results.find(show => show.login.uuid == id);
-  data.results.map(show => console.log(show.login.uuid));
-  console.log(id);
-
+  const posts = await supabase.from("posts").select();
+  const postsData = posts.data.find(post => post.id == id);
+  posts.data.map(post => console.log(post.id));
+  console.log(postsData);
 
   return {
-    props: { showData },
+    props: { postsData },
   };
 }
