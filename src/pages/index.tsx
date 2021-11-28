@@ -1,6 +1,6 @@
 import React, { useState} from "react";
 import Link from "next/link";
-import { supabase } from "./util/supabase";
+import { supabase } from "../components/util/supabase";
 
 const Home = ({ posts }: any) => {
   const [inputData, setInputData] = useState({ message: "" });

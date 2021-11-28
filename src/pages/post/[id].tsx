@@ -1,5 +1,5 @@
 import React from 'react'
-import { supabase } from "../util/supabase";
+import { supabase } from "../../components/util/supabase";
 
 const PostDetail = ({ postsData }) => {
   return (
