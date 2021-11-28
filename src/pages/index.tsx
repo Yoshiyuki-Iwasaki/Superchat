@@ -8,9 +8,13 @@ const Home = ({ data }) => {
       <ul>
         {data.results.map(show => (
           <li key={show.id.name}>
-            <Link as={`/post/${show.id.name}`} href={`/post?id=${show.id.name}`}>
+            <Link
+              as={`/post/${show.login.uuid}`}
+              href={`/post/${show.login.uuid}`}
+            >
               <a>
-                {show.name.first} {show.name.last}
+                {show.name.first}
+                {show.name.last}
               </a>
             </Link>
           </li>
