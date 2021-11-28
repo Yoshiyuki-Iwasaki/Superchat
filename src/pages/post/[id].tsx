@@ -1,7 +1,11 @@
 import React from 'react'
 import { supabase } from "../../components/util/supabase";
 
-const PostDetail = ({ postsData }) => {
+export type PostDetailType = {
+  postsData: any;
+};
+
+const PostDetail: React.FC<PostDetailType> = ({ postsData }) => {
   return (
     <>
       <p>{postsData.message}</p>
@@ -16,7 +20,6 @@ export async function getServerSideProps(context) {
   const posts = await supabase.from("posts").select();
   const postsData = posts.data.find(post => post.id == id);
   posts.data.map(post => console.log(post.id));
-  console.log(postsData);
 
   return {
     props: { postsData },

@@ -4,17 +4,20 @@ import {
   supabase
 } from "../components/util/supabase";
 
-const Home = ({ posts }: any) => {
+export type HomeType = {
+  posts: any;
+};
+
+const Home: React.FC<HomeType> = ({ posts }) => {
   const [inputData, setInputData] = useState({ message: "" });
   const { message } = inputData;
 
   const createPost = async () => {
     await supabase.from("posts").insert([{ message }]).single();
     setInputData({ message: "" });
-  }
+  };
   return (
     <>
-      <p>投稿一覧</p>
       <ul>
         {posts.data.map((post: any, index: number) => (
           <li key={index}>
