@@ -11,9 +11,7 @@ export type HomeType = {
 
 const Home: React.FC<HomeType> = ({ posts }) => {
   const user = supabase.auth.user();
-  const [inputData, setInputData] = useState({ message: "" });
   const [chatList, setChatList] = useState([]);
-  const { message } = inputData;
 
   useEffect(() => {
     const fetch = async () => {
@@ -26,16 +24,10 @@ const Home: React.FC<HomeType> = ({ posts }) => {
     fetch();
   }, []);
 
-  const createPost = async () => {
-    await supabase
-      .from("posts")
-      .insert([{ message, user_id: user.id }])
-      .single();
-    setInputData({ message: "" });
-  };
   return (
     <>
       <h2>チャット一覧</h2>
+      <button onClick={(e)=>console.log(e)}>チャット作成</button>
       <ul>
         {chatList &&
           chatList.map((chat: any, index: number) => (
@@ -48,24 +40,6 @@ const Home: React.FC<HomeType> = ({ posts }) => {
             </li>
           ))}
       </ul>
-      <h2>メッセージ一覧</h2>
-      <ul>
-        {posts.data.map((post: any, index: number) => (
-          <li key={index}>
-            <Link href={`post/${post.id}`} as={`post/${post.id}`} passHref>
-              <a>
-                <p>{post.message}</p>
-              </a>
-            </Link>
-          </li>
-        ))}
-      </ul>
-      <input
-        placeholder="message"
-        value={message}
-        onChange={e => setInputData({ ...inputData, message: e.target.value })}
-      />
-      <button onClick={createPost}>Create Post</button>
     </>
   );
 };
