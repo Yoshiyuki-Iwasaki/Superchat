@@ -1,6 +1,6 @@
 import React, { useState ,useEffect} from 'react'
 import { supabase } from "../../components/util/supabase";
-import Link from "next/link";
+import { formatDate } from "../../components/util/date"
 
 export type ChatDetailType = {
   chatData: any;
@@ -36,11 +36,13 @@ const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
     <>
       {chatData.title}
       <ul>
-        {posts && posts.map((post: any, index: number) => (
-          <li key={index}>
-            <p>{post.message}</p>
-          </li>
-        ))}
+        {posts &&
+          posts.map((post: any, index: number) => (
+            <li key={index}>
+              <p>{formatDate(post.created_at)}</p>
+              <p>{post.message}</p>
+            </li>
+          ))}
       </ul>
       <input
         placeholder="message"
