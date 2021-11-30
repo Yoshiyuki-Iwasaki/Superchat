@@ -27,7 +27,7 @@ const Home: React.FC<HomeType> = ({ posts }) => {
         .from("profile")
         .select()
         .eq("id", user.id);
-      console.log("profileData", data);
+      console.log("profileData", profileData);
       console.log("user.id", user.id);
       if (profileData === undefined) router.push("./profile");
     };
