@@ -11,9 +11,8 @@ const Profile = () => {
     if (!username) return;
     await supabase
       .from("profile")
-      .insert([{ id: user.id, username, avatar_id: '', }]);
+      .insert([{ id: user.id, username, avatar_url: '', }]);
     setInputData({ username: "" });
-    console.log('test')
   }
   return (
     <>
