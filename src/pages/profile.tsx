@@ -13,7 +13,7 @@ const Profile = () => {
           .from("profile")
           .select()
           .eq("id", user.id);
-        if (data != undefined) router.push("/");
+        // if (data != undefined) router.push("/");
         console.log("profileData", data);
         console.log("user.id", user.id);
       };
