@@ -13,6 +13,7 @@ const Profile = () => {
       .insert([{ id: user.id, username, avatar_id:'', }])
       .single();
     setInputData({ username: "" });
+    console.log('test')
   }
   return (
     <>
