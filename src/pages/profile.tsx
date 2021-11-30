@@ -8,7 +8,7 @@ const Profile = () => {
 
   const createProfile = async (e) => {
     e.preventDefault();
-    if (username) return;
+    if (!username) return;
     await supabase
       .from("profile")
       .insert([{ id: user.id, username, avatar_id: '', }]);
