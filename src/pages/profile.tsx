@@ -11,11 +11,12 @@ const Profile = () => {
       const fetch = async () => {
         const { profileData, profileDataError }: any = await supabase
           .from("profile")
-          .select("*")
+          .select("username")
           .eq("id", user.id)
           .single();
         if (profileData != undefined) router.push("/");
         console.log("profileData", profileData);
+        console.log("user.id", user.id);
       };
       fetch();
     }, []);
