@@ -28,7 +28,6 @@ const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
         .select()
         .eq("chat_id", chatData.id);
       setPosts(data);
-      console.log("data", data);
     };
     fetch();
   }, []);
