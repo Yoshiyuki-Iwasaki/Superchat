@@ -9,13 +9,12 @@ const Profile = () => {
 
     useEffect(() => {
       const fetch = async () => {
-        const { profileData, profileDataError }: any = await supabase
+        const { data, error } = await supabase
           .from("profile")
-          .select("username")
-          .eq("id", user.id)
-          .single();
-        if (profileData != undefined) router.push("/");
-        console.log("profileData", profileData);
+          .select()
+          .eq("id", user.id);
+        if (data != undefined) router.push("/");
+        console.log("profileData", data);
         console.log("user.id", user.id);
       };
       fetch();
