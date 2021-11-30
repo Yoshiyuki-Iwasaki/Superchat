@@ -11,7 +11,7 @@ const Profile = () => {
       const fetch = async () => {
         const { profileData, profileDataError }: any = await supabase
           .from("profile")
-          .select("")
+          .select()
           .eq("id", user.id);
         if (profileData != undefined) router.push("/");
         console.log("profileData", profileData);
