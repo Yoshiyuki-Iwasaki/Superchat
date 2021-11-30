@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { supabase } from "../components/util/supabase";
-import { useRouter } from "next/router";
 
 const SignIn = () => {
 
@@ -19,9 +18,7 @@ const SignIn = () => {
 
   return (
     <>
-      <button onClick={e => handleSignIn(e)}>
-        SignIn
-      </button>
+      <button onClick={e => handleSignIn(e)}>ログイン</button>
     </>
   );
 };

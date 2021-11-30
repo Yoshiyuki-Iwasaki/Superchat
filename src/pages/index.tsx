@@ -2,6 +2,7 @@ import React, { useState, useEffect} from "react";
 import Link from "next/link";
 import { supabase } from "../components/util/supabase";
 import Header from "../components/modules/header";
+import router from 'next/router'
 
 export type HomeType = {
   posts: any;
@@ -22,10 +23,11 @@ const Home: React.FC<HomeType> = ({ posts }) => {
         .select("id, title, created_at")
         .contains("users", [user.id]);
       setChatList(data);
-      const { userData, userError }: any = await supabase
-        .from("users")
-        .select("*")
-      console.log("userData", userData);
+      const { profileData, profileDataError }: any = await supabase
+        .from("profile")
+        .select("")
+        .eq("id", user.id);
+      if(profileData === null) router.push('./profile');
     };
     fetch();
   }, []);

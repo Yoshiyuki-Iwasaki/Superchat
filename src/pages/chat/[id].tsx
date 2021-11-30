@@ -12,7 +12,8 @@ const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
   const [inputData, setInputData] = useState({ message: "" });
   const { message } = inputData;
 
-  const createPost = async () => {
+  const createPost = async e => {
+    e.preventDefault();
     await supabase
       .from("posts")
       .insert([{ message, user_id: user.id, chat_id: chatData.id }])
@@ -49,7 +50,7 @@ const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
         value={message}
         onChange={e => setInputData({ ...inputData, message: e.target.value })}
       />
-      <button onClick={createPost}>Create Post</button>
+      <button onClick={e => createPost(e)}>Create Post</button>
     </>
   );
 };
