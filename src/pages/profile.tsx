@@ -12,7 +12,7 @@ const Profile = () => {
         const { profileData, profileDataError }: any = await supabase
           .from("profile")
           .select()
-          .eq("id", user.id);
+          // .eq("id", user.id);
         if (profileData != undefined) router.push("/");
         console.log("profileData", profileData);
       };
