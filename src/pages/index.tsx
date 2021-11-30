@@ -25,8 +25,7 @@ const Home: React.FC<HomeType> = ({ posts }) => {
       setChatList(data);
       const { profileData, profileDataError }: any = await supabase
         .from("profile")
-        .select()
-        .eq("id", user.id);
+        .select();
       console.log("profileData", profileData);
       console.log("user.id", user.id);
       if (profileData === undefined) router.push("./profile");

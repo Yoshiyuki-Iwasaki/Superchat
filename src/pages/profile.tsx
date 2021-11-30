@@ -14,7 +14,7 @@ const Profile = () => {
           .select()
           .eq("id", user.id);
         // if (data != undefined) router.push("/");
-        console.log("profileData", data);
+        console.log("data", data);
         console.log("user.id", user.id);
       };
       fetch();
