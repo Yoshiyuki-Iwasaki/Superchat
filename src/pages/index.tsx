@@ -6,9 +6,11 @@ import router from 'next/router'
 
 export type HomeType = {
   users: any;
+  posts: any;
+  chat: any;
 };
 
-const Home: React.FC<HomeType> = ({ users }) => {
+const Home: React.FC<HomeType> = ({ users, posts, chat }) => {
   const user = supabase.auth.user();
   const [inputData, setInputData] = useState<any>({ title: "" });
   const [chatList, setChatList] = useState<any>([]);
@@ -28,6 +30,8 @@ const Home: React.FC<HomeType> = ({ users }) => {
     fetch();
   }, []);
   console.log("users", users);
+  console.log("posts", posts);
+  console.log("chat", chat);
 
   const createChat = async () => {
     if (!title) return;
@@ -98,7 +102,9 @@ export default Home;
 
 export async function getServerSideProps() {
   const users = await supabase.from("users").select();
+  const posts = await supabase.from("posts").select();
+  const chat = await supabase.from("chat").select();
   return {
-    props: { users },
+    props: { users, posts, chat },
   };
 }
