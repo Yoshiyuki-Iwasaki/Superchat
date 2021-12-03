@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../util/supabase";
+import styled from "styled-components";
 
 const Sidebar = ({ users }) => {
   const [inputData, setInputData] = useState<any>({ title: "" });
@@ -39,7 +40,7 @@ const Sidebar = ({ users }) => {
     });
   };
   return (
-    <div>
+    <SidebarArea>
       <h2>チャット一覧</h2>
       <form onSubmit={e => createChat(e)}>
         <input
@@ -63,8 +64,13 @@ const Sidebar = ({ users }) => {
         </ul>
         <button onClick={e => createChat(e)}>チャット作成</button>
       </form>
-    </div>
+    </SidebarArea>
   );
 };
 
 export default Sidebar
+
+
+const SidebarArea = styled.aside`
+  width: calc(100% / 5);
+`;

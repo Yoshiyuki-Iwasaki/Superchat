@@ -14,7 +14,7 @@ const Layout: React.FC<LayoutType> = ({ children, users }) => {
       <Header />
       <Main>
         <Sidebar users={users} />
-        {children}
+        <Content>{children}</Content>
       </Main>
     </>
   );
@@ -24,4 +24,7 @@ export default Layout;
 
 const Main = styled.div`
   display: flex;
+`;
+const Content = styled.div`
+  width: calc(100% - (100% / 5));
 `;
