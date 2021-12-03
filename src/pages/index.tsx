@@ -23,7 +23,10 @@ const Home: React.FC<HomeType> = ({ users }) => {
         .select("id, title, created_at")
         .contains("users", [user.id]);
       setChatList(data);
-      setUserList(users);
+      const { userData, userDataError }: any = await supabase
+        .from("users")
+        .select();
+      setUserList(userData);
     };
     fetch();
   }, []);
