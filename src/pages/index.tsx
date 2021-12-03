@@ -23,11 +23,11 @@ const Home: React.FC<HomeType> = ({ users }) => {
         .select("id, title, created_at")
         .contains("users", [user.id]);
       setChatList(data);
-      setUserList(users);
+      // setUserList(users);
     };
     fetch();
   }, []);
-  console.log("userList", userList);
+  console.log("users", users);
 
   const createChat = async () => {
     if (!title) return;
