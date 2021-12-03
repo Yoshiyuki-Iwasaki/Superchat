@@ -18,7 +18,6 @@ const Header = () => {
         .contains("users", [user.id]);
       setUserList(data);
     };
-    console.log("userList", userList);
     fetch();
   }, []);
   return (
