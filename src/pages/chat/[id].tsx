@@ -33,6 +33,10 @@ const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
     setInputData({ message: "" });
   };
 
+  const handleChange = e => {
+     setInputData({ ...inputData, message: e.target.value });
+  };
+
   return (
     <>
       {chatData.title}
@@ -48,7 +52,7 @@ const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
       <input
         placeholder="message"
         value={message}
-        onChange={e => setInputData({ ...inputData, message: e.target.value })}
+        onChange={e => handleChange(e)}
       />
       <button onClick={e => createPost(e)}>Create Post</button>
     </>
