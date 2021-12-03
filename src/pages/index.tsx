@@ -5,11 +5,10 @@ import Header from "../components/modules/header";
 import router from 'next/router'
 
 export type HomeType = {
-  posts: any;
-  chat: any;
+  users: any;
 };
 
-const Home: React.FC<HomeType> = ({ posts }) => {
+const Home: React.FC<HomeType> = ({ users }) => {
   const user = supabase.auth.user();
   const [inputData, setInputData] = useState<any>({ title: "" });
   const [chatList, setChatList] = useState<any>([]);
@@ -24,14 +23,11 @@ const Home: React.FC<HomeType> = ({ posts }) => {
         .select("id, title, created_at")
         .contains("users", [user.id]);
       setChatList(data);
-      const { userData, userDataError }: any = await supabase
-        .from("users")
-        .select()
-      setUserList(userData);
-      console.log('userData', userData);
+      setUserList(users);
     };
     fetch();
   }, []);
+  console.log("userList", userList);
 
   const createChat = async () => {
     if (!title) return;
@@ -55,8 +51,6 @@ const Home: React.FC<HomeType> = ({ posts }) => {
       [e.target.id]: e.target.checked,
     });
   };
-
-  console.log('userList', userList);
 
   return (
     <>
@@ -103,8 +97,8 @@ const Home: React.FC<HomeType> = ({ posts }) => {
 export default Home;
 
 export async function getServerSideProps() {
-  const posts = await supabase.from("posts").select();
+  const users = await supabase.from("users").select();
   return {
-    props: { posts },
+    props: { users },
   };
 }
