@@ -7,10 +7,10 @@ const SignIn = () => {
     e.preventDefault();
     try {
       const { user, session, error } = await supabase.auth.signIn({
-        provider: "twitter",
+        provider: "github",
       });
+      console.log('user', user);
       if (error) throw error;
-      alert("logged in");
     } catch (error) {
       alert(error.message);
     }
