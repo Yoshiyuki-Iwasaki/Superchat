@@ -55,6 +55,8 @@ const Home: React.FC<HomeType> = ({ posts }) => {
     });
   };
 
+  console.log('userList', userList);
+
   return (
     <>
       <Header />
