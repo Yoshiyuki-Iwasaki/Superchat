@@ -24,14 +24,13 @@ const Home: React.FC<HomeType> = ({ users }) => {
         .contains("users", [user.id]);
       setChatList(data);
       setUserList(users.data);
-      console.log("users", users);
-      console.log("users.data", users.data);
     };
     fetch();
   }, []);
 
-  const createChat = async () => {
+  const createChat = async e => {
     if (!title) return;
+    e.preventDefault();
     const dataPushArray = Object.entries(checkData).reduce(
       (pre, [key, value]) => {
         value && pre.push(key);
@@ -57,7 +56,7 @@ const Home: React.FC<HomeType> = ({ users }) => {
     <>
       <Header />
       <h2>チャット一覧</h2>
-      <form onSubmit={createChat}>
+      <form onSubmit={e => createChat(e)}>
         <input
           placeholder="title"
           value={title}
@@ -77,7 +76,7 @@ const Home: React.FC<HomeType> = ({ users }) => {
               </li>
             ))}
         </ul>
-        <button onClick={createChat}>チャット作成</button>
+        <button onClick={e => createChat(e)}>チャット作成</button>
       </form>
       <ul>
         {chatList &&
