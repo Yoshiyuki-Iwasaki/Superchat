@@ -27,6 +27,7 @@ const Home: React.FC<HomeType> = ({ users }) => {
         .from("users")
         .select();
       setUserList(userData);
+      console.log('userData', userData);
     };
     fetch();
   }, []);
