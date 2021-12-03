@@ -11,10 +11,10 @@ export type HomeType = {
 
 const Home: React.FC<HomeType> = ({ posts }) => {
   const user = supabase.auth.user();
-  const [inputData, setInputData] = useState({ title: "" });
-  const [chatList, setChatList] = useState([]);
-  const [userList, setUserList] = useState([]);
-  const [checkData, setCheckData] = useState({});
+  const [inputData, setInputData] = useState<any>({ title: "" });
+  const [chatList, setChatList] = useState<any[]>([]);
+  const [userList, setUserList] = useState<any[]>([]);
+  const [checkData, setCheckData] = useState<any>({});
   const { title } = inputData;
 
   useEffect(() => {
