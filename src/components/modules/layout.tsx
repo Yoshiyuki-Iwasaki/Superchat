@@ -5,14 +5,15 @@ import Sidebar from "./sidebar";
 
 export type LayoutType = {
   children: any;
+  users: any;
 };
 
-const Layout: React.FC<LayoutType> = ({ children }) => {
+const Layout: React.FC<LayoutType> = ({ children, users }) => {
   return (
     <>
       <Header />
       <Main>
-        <Sidebar />
+        <Sidebar users={users} />
         {children}
       </Main>
     </>

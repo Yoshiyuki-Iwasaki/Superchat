@@ -1,12 +1,14 @@
 import React, { useState ,useEffect} from 'react'
 import { supabase } from "../../components/util/supabase";
 import { formatDate } from "../../components/util/date"
+import Layout from '../../components/modules/layout'
 
 export type ChatDetailType = {
   chatData: any;
+  users: any;
 };
 
-const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
+const ChatDetail: React.FC<ChatDetailType> = ({ chatData, users }) => {
   const user = supabase.auth.user();
   const [posts, setPosts] = useState([]);
   const [inputData, setInputData] = useState({ message: "" });
@@ -34,11 +36,11 @@ const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
   };
 
   const handleChange = e => {
-     setInputData({ ...inputData, message: e.target.value });
+    setInputData({ ...inputData, message: e.target.value });
   };
 
   return (
-    <>
+    <Layout users={users}>
       {chatData.title}
       <ul>
         {posts &&
@@ -55,7 +57,7 @@ const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
         onChange={e => handleChange(e)}
       />
       <button onClick={e => createPost(e)}>Create Post</button>
-    </>
+    </Layout>
   );
 };
 
@@ -66,8 +68,9 @@ export async function getServerSideProps(context) {
   const { id } = context.query;
   const chat = await supabase.from("chat").select();
   const chatData = chat.data.find(chat => chat.id == id);
+  const users = await supabase.from("users").select();
 
   return {
-    props: { chatData },
+    props: { chatData, users },
   };
 }
