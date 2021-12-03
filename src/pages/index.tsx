@@ -42,10 +42,12 @@ const Home: React.FC<HomeType> = ({ users }) => {
     console.log("dataPushArray", dataPushArray);
     console.log('checkData', checkData);
 
-    await supabase
+    const { data, error } = await supabase
       .from("chat")
       .insert([{ title, users: dataPushArray }])
       .single();
+    console.log('data', data);
+    console.log('error', error);
     setInputData({ title: "" });
   };
 
