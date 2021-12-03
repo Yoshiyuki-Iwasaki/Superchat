@@ -13,6 +13,7 @@ const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
   const { message } = inputData;
 
   const createPost = async e => {
+    if (!message) return;
     e.preventDefault();
     await supabase
       .from("posts")

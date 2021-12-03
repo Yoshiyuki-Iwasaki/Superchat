@@ -13,6 +13,7 @@ const Home: React.FC<HomeType> = ({ posts }) => {
   const user = supabase.auth.user();
   const [inputData, setInputData] = useState({ title: "" });
   const [chatList, setChatList] = useState([]);
+  const [userList, setUserList] = useState([]);
   const [checkData, setCheckData] = useState({});
   const { title } = inputData;
 
@@ -23,11 +24,16 @@ const Home: React.FC<HomeType> = ({ posts }) => {
         .select("id, title, created_at")
         .contains("users", [user.id]);
       setChatList(data);
+      const { userData, userDataError }: any = await supabase
+        .from("users")
+        .select("id, fullname, avatarurl")
+      setUserList(userData);
     };
     fetch();
   }, []);
 
   const createChat = async () => {
+    if (!title) return;
     const dataPushArray = Object.entries(checkData).reduce(
       (pre, [key, value]) => {
         value && pre.push(key);
@@ -37,7 +43,7 @@ const Home: React.FC<HomeType> = ({ posts }) => {
     );
     await supabase
       .from("posts")
-      .insert([{ title, user_id: user.id }])
+      .insert([{ title, user_id: dataPushArray }])
       .single();
     setInputData({ title: "" });
   };
@@ -53,13 +59,28 @@ const Home: React.FC<HomeType> = ({ posts }) => {
     <>
       <Header />
       <h2>チャット一覧</h2>
-      <input
-        placeholder="title"
-        value={title}
-        onChange={e => setInputData({ ...inputData, title: e.target.value })}
-      />
-
-      <button onClick={createChat}>チャット作成</button>
+      <form onSubmit={createChat}>
+        <input
+          placeholder="title"
+          value={title}
+          onChange={e => setInputData({ ...inputData, title: e.target.value })}
+        />
+        <ul>
+          {userList &&
+            userList.map((doc: any, index: number) => (
+              <li key={index}>
+                <input
+                  id={doc.id}
+                  type="checkbox"
+                  onChange={handleChange}
+                  value={checkData}
+                />
+                <label htmlFor={doc.id}>{doc.fullname}</label>
+              </li>
+            ))}
+        </ul>
+        <button onClick={createChat}>チャット作成</button>
+      </form>
       <ul>
         {chatList &&
           chatList.map((chat: any, index: number) => (
