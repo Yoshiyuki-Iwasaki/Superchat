@@ -26,7 +26,7 @@ const Home: React.FC<HomeType> = ({ posts }) => {
       setChatList(data);
       const { userData, userDataError }: any = await supabase
         .from("users")
-        .select("id, fullname, avatarurl")
+        .select()
       setUserList(userData);
     };
     fetch();
