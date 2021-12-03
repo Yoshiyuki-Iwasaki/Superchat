@@ -39,15 +39,10 @@ const Home: React.FC<HomeType> = ({ users }) => {
       []
     );
 
-    console.log("dataPushArray", dataPushArray);
-    console.log('checkData', checkData);
-
     const { data, error } = await supabase
       .from("chat")
       .insert([{ title, users: dataPushArray }])
       .single();
-    console.log('data', data);
-    console.log('error', error);
     setInputData({ title: "" });
   };
 
@@ -103,6 +98,7 @@ const Home: React.FC<HomeType> = ({ users }) => {
 export default Home;
 
 export async function getServerSideProps() {
+  const chat = await supabase.from("chat").select();
   const users = await supabase.from("users").select();
   return {
     props: { users },

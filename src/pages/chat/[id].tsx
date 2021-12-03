@@ -12,16 +12,6 @@ const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
   const [inputData, setInputData] = useState({ message: "" });
   const { message } = inputData;
 
-  const createPost = async e => {
-    if (!message) return;
-    e.preventDefault();
-    await supabase
-      .from("posts")
-      .insert([{ message, user_id: user.id, chat_id: chatData.id }])
-      .single();
-    setInputData({ message: "" });
-  };
-
   useEffect(() => {
     const fetch = async () => {
       const { data, error } = await supabase
@@ -32,6 +22,16 @@ const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
     };
     fetch();
   }, []);
+
+  const createPost = async e => {
+    if (!message) return;
+    e.preventDefault();
+    const { data, error } = await supabase
+      .from("posts")
+      .insert([{ message, user_id: user.id, chat_id: chatData.id }])
+      .single();
+    setInputData({ message: "" });
+  };
 
   return (
     <>
