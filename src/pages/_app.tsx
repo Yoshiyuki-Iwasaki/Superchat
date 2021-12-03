@@ -33,7 +33,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         <h1>loading...</h1>
       ) : (
         <>
-          <button onClick={() => supabase.auth.signOut()}>ログアウト</button>
           <Component {...pageProps} />
         </>
       )}
