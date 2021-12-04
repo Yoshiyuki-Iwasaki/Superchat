@@ -22,7 +22,7 @@ const EditProfile = () => {
 
   const UpdateProfile = async e => {
     if (!fullname) return;
-
+    e.preventDefault();
     const { data, error } = await supabase
       .from("users")
       .upsert({ id: userList[0].id, fullname });
