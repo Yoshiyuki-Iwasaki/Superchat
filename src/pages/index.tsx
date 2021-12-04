@@ -88,9 +88,7 @@ export async function getServerSideProps() {
 
 
 
-const Main = styled.div`
-  padding-top: 30px;
-`;
+const Main = styled.div``;
 const Title = styled.h2`
   font-size: 18px;
   font-weight: 700;

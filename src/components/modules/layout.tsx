@@ -24,6 +24,7 @@ const Layout: React.FC<LayoutType> = ({ children }) => {
 export default Layout;
 
 const Main = styled.div`
+  padding-top: 30px;
 `;
 const Inner = styled.div`
   margin: 0 auto;

@@ -2,6 +2,7 @@ import React, { useState ,useEffect} from 'react'
 import { supabase } from "../../util/supabase";
 import { formatDate } from "../../util/date"
 import Layout from '../../components/modules/layout'
+import styled from "styled-components";
 
 export type ChatDetailType = {
   chatData: any;
@@ -40,22 +41,22 @@ const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
 
   return (
     <Layout>
-      <h2>{chatData.title}</h2>
-      <ul>
+      <Title>{chatData.title}</Title>
+      <List>
         {posts &&
           posts.map((post: any, index: number) => (
-            <li key={index}>
-              <p>{formatDate(post.created_at)}</p>
-              <p>{post.message}</p>
-            </li>
+            <ListItem key={index}>
+              <Date>{formatDate(post.created_at)}</Date>
+              <Message>{post.message}</Message>
+            </ListItem>
           ))}
-      </ul>
-      <input
+      </List>
+      <Input
         placeholder="message"
         value={message}
         onChange={e => handleChange(e)}
       />
-      <button onClick={e => createPost(e)}>Create Post</button>
+      <Button onClick={e => createPost(e)}>Create Post</Button>
     </Layout>
   );
 };
@@ -72,3 +73,23 @@ export async function getServerSideProps(context) {
     props: { chatData },
   };
 }
+
+const Title = styled.h2`
+  font-size: 18px;
+  font-weight: 700;
+  color: #2b3a42;
+`;
+const List = styled.ul``;
+const ListItem = styled.li`
+  padding: 15px;
+`;
+const Date = styled.p`
+  font-size: 13px;
+  color: #2b3a42;
+`;
+const Message = styled.p`
+  font-size: 15px;
+  color: #2b3a42;
+`;
+const Input = styled.input``;
+const Button = styled.button``;
