@@ -47,7 +47,7 @@ const handleChange = e => {
   return (
     <Layout>
       <Main>
-        <Title>チャット一覧</Title>
+        <Title>チャット作成</Title>
         <Form onSubmit={e => createChat(e)}>
           <input
             placeholder="title"
@@ -94,9 +94,17 @@ const Title = styled.h2`
   font-weight: 700;
   color: #2b3a42;
 `;
-const Form = styled.form``;
+const Form = styled.form`
+  margin-top: 15px;
+`;
 const List = styled.ul``;
 const ListItem = styled.li``;
 const Checkbox = styled.input``;
 const Label = styled.label``;
-const Button = styled.button``;
+const Button = styled.button`
+  margin-top: 10px;
+  padding: 5px 10px;
+  background: #2b3a42;
+  font-size: 14px;
+  color: #fff;
+`;

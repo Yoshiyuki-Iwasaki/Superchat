@@ -45,7 +45,9 @@ const Title = styled.h2`
   font-weight: 700;
   color: rgb(43, 58, 66);
 `;
-const List = styled.ul``;
+const List = styled.ul`
+  margin-top: 15px;
+`;
 const ListItem = styled.li``;
 const LinkText = styled.a`
   padding: 10px 5px;
