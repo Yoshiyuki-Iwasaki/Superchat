@@ -22,6 +22,8 @@ const EditProfile = () => {
   }, []);
 
   console.log('userList', userList);
+  console.log('userList[0]', userList[0]);
+  console.log("userList[0].id", userList[0].id);
 
   const UpdateProfile = async e => {
     if (!fullname) return;
