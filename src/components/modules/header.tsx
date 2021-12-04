@@ -45,8 +45,14 @@ const HeaderLayout = styled.header``;
 const Inner = styled.div`
   margin: 0 auto;
   display: flex;
-  width: 1000px;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1000px;
+  height: 60px;
 `;
 const Title = styled.h1``;
-const Logo = styled.div``;
+const Logo = styled.a`
+  font-size: 18px;
+  font-weight: 700;
+`;
 const RightArea = styled.div``;

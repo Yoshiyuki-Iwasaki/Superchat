@@ -12,8 +12,10 @@ const Layout: React.FC<LayoutType> = ({ children }) => {
     <>
       <Header />
       <Main>
-        <Sidebar />
-        <Content>{children}</Content>
+        <Inner>
+          <Sidebar />
+          <Content>{children}</Content>
+        </Inner>
       </Main>
     </>
   );
@@ -23,6 +25,10 @@ export default Layout;
 
 const Main = styled.div`
   display: flex;
+`;
+const Inner = styled.div`
+  margin: 0 auto;
+  max-width: 1000px;
 `;
 const Content = styled.div`
   width: calc(100% - (100% / 5));
