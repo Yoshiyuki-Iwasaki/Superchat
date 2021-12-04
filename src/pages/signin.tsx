@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { supabase } from "../components/util/supabase";
+import { supabase } from "../util/supabase";
 
 const SignIn = () => {
 

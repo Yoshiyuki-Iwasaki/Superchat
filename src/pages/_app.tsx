@@ -1,6 +1,6 @@
 import '../../styles/globals.css'
 import { AppProps } from "next/app";
-import { supabase } from "../components//util/supabase";
+import { supabase } from "../util/supabase";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { supabase } from "../util/supabase";
+import { supabase } from "../../util/supabase";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import Link from "next/link";
@@ -60,6 +60,6 @@ const Logo = styled.a`
 `;
 const RightArea = styled.div``;
 const Button = styled.button`
-  padding: 5 px 10 px;
+  padding: 5px 10px;
   background: #f3f3f3;
 `;

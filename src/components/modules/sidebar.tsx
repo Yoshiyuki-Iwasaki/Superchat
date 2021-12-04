@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { supabase } from "../util/supabase";
+import { supabase } from "../../util/supabase";
 import styled from "styled-components";
 import Link from "next/link";
 

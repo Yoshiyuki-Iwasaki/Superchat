@@ -1,6 +1,6 @@
 import React, { useState ,useEffect} from 'react'
-import { supabase } from "../../components/util/supabase";
-import { formatDate } from "../../components/util/date"
+import { supabase } from "../../util/supabase";
+import { formatDate } from "../../util/date"
 import Layout from '../../components/modules/layout'
 
 export type ChatDetailType = {

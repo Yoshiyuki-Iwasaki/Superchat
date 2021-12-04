@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { supabase } from "../components/util/supabase";
+import { supabase } from "../util/supabase";
 import router from "next/router";
 
 const Profile = () => {

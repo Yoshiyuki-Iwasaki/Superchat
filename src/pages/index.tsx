@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from "react";
-import { supabase } from "../components/util/supabase";
+import { supabase } from "../util/supabase";
 import Layout from '../components/modules/layout';
 import styled from "styled-components";
 
