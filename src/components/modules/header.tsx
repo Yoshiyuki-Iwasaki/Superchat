@@ -5,13 +5,13 @@ import styled from "styled-components";
 import Link from "next/link";
 
 const Header = () => {
+  const user = supabase.auth.user();
   const [userList, setUserList] = useState([]);
   const router = useRouter();
   const signOut = () => {
     supabase.auth.signOut();
     router.push("./signin");
   };
-  const user = supabase.auth.user();
   useEffect(() => {
     const fetch = async () => {
       const { data, error }: any = await supabase
@@ -22,6 +22,7 @@ const Header = () => {
     };
     fetch();
   }, []);
+  console.log('userList', userList);
   return (
     <HeaderLayout>
       <Inner>
@@ -31,7 +32,7 @@ const Header = () => {
           </Link>
         </Title>
         <RightArea>
-          {userList && <p>{userList[0].id}</p>}
+          {/* {userList && <p>{userList[0].id}</p>} */}
           <Link href="/editProfile" as="/editProfile" passHref>
             <LinkText>プロフィール編集</LinkText>
           </Link>
