@@ -23,7 +23,7 @@ const Sidebar = () => {
         {chatList &&
           chatList.map((chat: any, index: number) => (
             <li key={index}>
-              <Link href={`/chat/${chat.id}`} as={`chat/${chat.id}`} passHref>
+              <Link href={`/chat/${chat.id}`} as={`/chat/${chat.id}`} passHref>
                 <a>
                   <p>{chat.title}</p>
                 </a>
