@@ -1,4 +1,4 @@
-import '../../styles/globals'
+import '../../styles/globals.css'
 import { AppProps } from "next/app";
 import { supabase } from "../components//util/supabase";
 import { useRouter } from "next/router";
