@@ -36,7 +36,7 @@ const Header = () => {
           </Link>
         </Title>
         <RightArea>
-          {userList[0].id && <p>{userList[0].id}</p>}
+          {/* {userList[0].id && <p>{userList[0].id}</p>} */}
           <Link href="/editProfile" as="/editProfile" passHref>
             <LinkText>プロフィール編集</LinkText>
           </Link>
