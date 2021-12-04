@@ -49,7 +49,7 @@ const handleChange = e => {
       <Main>
         <Title>チャット作成</Title>
         <Form onSubmit={e => createChat(e)}>
-          <input
+          <Input
             placeholder="title"
             value={title}
             onChange={e =>
@@ -95,6 +95,8 @@ const Title = styled.h2`
 `;
 const Form = styled.form`
   margin-top: 15px;
+`;
+const Input = styled.input`
 `;
 const List = styled.ul`
   margin-top: 10px;

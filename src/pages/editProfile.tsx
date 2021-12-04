@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../util/supabase";
 import styled from "styled-components";
+import Layout from "../components/modules/layout";
 
 const EditProfile = () => {
   const user = supabase.auth.user();
@@ -30,9 +31,9 @@ const EditProfile = () => {
   };
 
   return (
-    <div>
+    <Layout>
       <Form onSubmit={e => UpdateProfile(e)}>
-        <input
+        <Input
           placeholder="fullname"
           value={fullname}
           onChange={e =>
@@ -41,7 +42,7 @@ const EditProfile = () => {
         />
         <Button onClick={e => UpdateProfile(e)}>チャット作成</Button>
       </Form>
-    </div>
+    </Layout>
   );
 }
 
@@ -51,6 +52,7 @@ export default EditProfile;
 const Form = styled.form`
   margin-top: 15px;
 `;
+const Input = styled.input``;
 const Button = styled.button`
   margin-top: 10px;
   padding: 5px 10px;
