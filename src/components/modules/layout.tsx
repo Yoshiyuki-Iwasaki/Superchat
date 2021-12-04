@@ -25,6 +25,7 @@ export default Layout;
 
 const Main = styled.div`
   padding-top: 30px;
+  height: calc(100vh - 60px);
 `;
 const Inner = styled.div`
   margin: 0 auto;

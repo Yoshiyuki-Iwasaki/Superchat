@@ -51,12 +51,14 @@ const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
             </ListItem>
           ))}
       </List>
-      <Input
-        placeholder="message"
-        value={message}
-        onChange={e => handleChange(e)}
-      />
-      <Button onClick={e => createPost(e)}>Create Post</Button>
+      <Form onSubmit={e => createPost(e)}>
+        <Input
+          placeholder="message"
+          value={message}
+          onChange={e => handleChange(e)}
+        />
+        <Button onClick={e => createPost(e)}>Create Post</Button>
+      </Form>
     </Layout>
   );
 };
@@ -84,12 +86,14 @@ const ListItem = styled.li`
   padding: 15px;
 `;
 const Date = styled.p`
-  font-size: 13px;
+  font-size: 12px;
   color: #2b3a42;
 `;
 const Message = styled.p`
+  margin-top: 10px;
   font-size: 15px;
   color: #2b3a42;
 `;
+const Form = styled.form``;
 const Input = styled.input``;
 const Button = styled.button``;
