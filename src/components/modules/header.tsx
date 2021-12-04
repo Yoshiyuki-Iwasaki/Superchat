@@ -43,8 +43,10 @@ export default Header;
 
 const HeaderLayout = styled.header``;
 const Inner = styled.div`
+  margin: 0 auto;
   display: flex;
+  width: 1000px;
 `;
-const Title = styled.header``;
+const Title = styled.h1``;
 const Logo = styled.div``;
 const RightArea = styled.div``;
