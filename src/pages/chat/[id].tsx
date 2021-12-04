@@ -40,7 +40,7 @@ const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
 
   return (
     <Layout>
-      {chatData.title}
+      <h2>{chatData.title}</h2>
       <ul>
         {posts &&
           posts.map((post: any, index: number) => (

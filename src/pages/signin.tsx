@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { supabase } from "../util/supabase";
+import styled from "styled-components";
+import Header from "../components/modules/header";
 
 const SignIn = () => {
 
@@ -18,9 +20,24 @@ const SignIn = () => {
 
   return (
     <>
-      <button onClick={e => handleSignIn(e)}>ログイン</button>
+      <Header />
+      <Main>
+        <Inner>
+          <button onClick={e => handleSignIn(e)}>ログイン</button>
+        </Inner>
+      </Main>
     </>
   );
 };
 
 export default SignIn;
+
+const Main = styled.div``;
+const Inner = styled.div`
+  margin: 0 auto;
+  display: flex;
+  max-width: 1000px;
+`;
+const Content = styled.div`
+  width: calc(100% - (100% / 5));
+`;

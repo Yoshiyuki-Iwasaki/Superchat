@@ -19,6 +19,7 @@ const Sidebar = () => {
     }, []);
   return (
     <SidebarArea>
+      <Title>チャット一覧</Title>
       <List>
         {chatList &&
           chatList.map((chat: any, index: number) => (
@@ -38,6 +39,11 @@ export default Sidebar
 
 const SidebarArea = styled.aside`
   width: calc(100% / 5);
+`;
+const Title = styled.h2`
+  font-size: 18px;
+  font-weight: 700;
+  color: rgb(43, 58, 66);
 `;
 const List = styled.ul``;
 const ListItem = styled.li``;
