@@ -14,7 +14,7 @@ const EditProfile = () => {
       const { data, error }: any = await supabase
         .from("users")
         .select()
-        .contains("id", [user.id]);
+        .eq("id", [user.id]);
       setUserList(data);
       console.log("data", data);
     };
