@@ -22,6 +22,7 @@ const Header = () => {
     };
     fetch();
   }, []);
+  console.log('userList', userList);
   return (
     <HeaderLayout>
       <Inner>
