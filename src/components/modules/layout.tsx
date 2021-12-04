@@ -24,14 +24,17 @@ const Layout: React.FC<LayoutType> = ({ children }) => {
 export default Layout;
 
 const Main = styled.div`
-  padding-top: 30px;
   height: calc(100vh - 60px);
 `;
 const Inner = styled.div`
   margin: 0 auto;
+  padding-top: 30px;
   display: flex;
   max-width: 1000px;
+  height: 100%;
 `;
 const Content = styled.div`
+  padding: 30px 10px 0;
   width: calc(100% - (100% / 5));
+  box-sizing: border-box;
 `;

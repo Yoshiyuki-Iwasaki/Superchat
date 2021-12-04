@@ -38,12 +38,15 @@ export default Sidebar
 
 
 const SidebarArea = styled.aside`
+  padding: 30px 10px 0;
   width: calc(100% / 5);
+  border-right: 2px solid #2b3a42;
+  box-sizing: border-box;
 `;
 const Title = styled.h2`
   font-size: 18px;
   font-weight: 700;
-  color: rgb(43, 58, 66);
+  color: #2b3a42;
 `;
 const List = styled.ul`
   margin-top: 15px;
@@ -54,5 +57,5 @@ const LinkText = styled.a`
   display: block;
   font-size: 14px;
   font-weight: 400;
-  color: rgb(43, 58, 66);
+  color: #2b3a42;
 `;
