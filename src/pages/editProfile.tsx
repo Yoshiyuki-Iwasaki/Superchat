@@ -16,18 +16,16 @@ const EditProfile = () => {
         .select()
         .eq("id", [user.id]);
       setUserList(data);
-      console.log("data", data);
     };
     fetch();
   }, []);
 
-  console.log('userList', userList);
-  console.log('userList[0]', userList[0]);
-
   const UpdateProfile = async e => {
     if (!fullname) return;
 
-    const { data, error } = await supabase.from("users").upsert({ id: '', fullname });
+    const { data, error } = await supabase
+      .from("users")
+      .upsert({ id: userList[0].id, fullname });
     setInputData({ fullname: "" });
   };
 
