@@ -5,10 +5,9 @@ import Layout from '../../components/modules/layout'
 
 export type ChatDetailType = {
   chatData: any;
-  users: any;
 };
 
-const ChatDetail: React.FC<ChatDetailType> = ({ chatData, users }) => {
+const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
   const user = supabase.auth.user();
   const [posts, setPosts] = useState([]);
   const [inputData, setInputData] = useState({ message: "" });
@@ -40,7 +39,7 @@ const ChatDetail: React.FC<ChatDetailType> = ({ chatData, users }) => {
   };
 
   return (
-    <Layout users={users}>
+    <Layout>
       {chatData.title}
       <ul>
         {posts &&
@@ -68,9 +67,8 @@ export async function getServerSideProps(context) {
   const { id } = context.query;
   const chat = await supabase.from("chat").select();
   const chatData = chat.data.find(chat => chat.id == id);
-  const users = await supabase.from("users").select();
 
   return {
-    props: { chatData, users },
+    props: { chatData },
   };
 }
