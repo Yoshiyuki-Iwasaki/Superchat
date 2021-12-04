@@ -38,6 +38,3 @@ const Inner = styled.div`
   display: flex;
   max-width: 1000px;
 `;
-const Content = styled.div`
-  width: calc(100% - (100% / 5));
-`;

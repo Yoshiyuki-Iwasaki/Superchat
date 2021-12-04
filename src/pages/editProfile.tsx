@@ -32,16 +32,19 @@ const EditProfile = () => {
 
   return (
     <Layout>
-      <Form onSubmit={e => UpdateProfile(e)}>
-        <Input
-          placeholder="fullname"
-          value={fullname}
-          onChange={e =>
-            setInputData({ ...inputData, fullname: e.target.value })
-          }
-        />
-        <Button onClick={e => UpdateProfile(e)}>チャット作成</Button>
-      </Form>
+      <Main>
+        <Title>プロフィール編集</Title>
+        <Form onSubmit={e => UpdateProfile(e)}>
+          <Input
+            placeholder="fullname"
+            value={fullname}
+            onChange={e =>
+              setInputData({ ...inputData, fullname: e.target.value })
+            }
+          />
+          <Button onClick={e => UpdateProfile(e)}>チャット作成</Button>
+        </Form>
+      </Main>
     </Layout>
   );
 }
@@ -49,6 +52,13 @@ const EditProfile = () => {
 export default EditProfile;
 
 
+const Main = styled.div``;
+const Title = styled.h2`
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #2b3a42;
+`;
 const Form = styled.form`
   margin-top: 15px;
 `;
