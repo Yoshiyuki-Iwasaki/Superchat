@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { supabase } from "../util/supabase";
 import styled from "styled-components";
 
-const editProfile = () => {
+const EditProfile = () => {
   const user = supabase.auth.user();
   const [userList, setUserList] = useState<any>([]);
   const [inputData, setInputData] = useState<any>({ fullname: "" });
@@ -45,7 +45,7 @@ const editProfile = () => {
   );
 }
 
-export default editProfile;
+export default EditProfile;
 
 
 const Form = styled.form`
