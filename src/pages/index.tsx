@@ -86,8 +86,6 @@ export async function getServerSideProps() {
   };
 }
 
-
-
 const Main = styled.div``;
 const Title = styled.h2`
   padding: 15px 0;
