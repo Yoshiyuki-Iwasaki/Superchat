@@ -19,18 +19,16 @@ const Sidebar = () => {
     }, []);
   return (
     <SidebarArea>
-      <ul>
+      <List>
         {chatList &&
           chatList.map((chat: any, index: number) => (
-            <li key={index}>
+            <ListItem key={index}>
               <Link href={`/chat/${chat.id}`} as={`/chat/${chat.id}`} passHref>
-                <a>
-                  <p>{chat.title}</p>
-                </a>
+                <LinkText>{chat.title}</LinkText>
               </Link>
-            </li>
+            </ListItem>
           ))}
-      </ul>
+      </List>
     </SidebarArea>
   );
 };
@@ -40,4 +38,12 @@ export default Sidebar
 
 const SidebarArea = styled.aside`
   width: calc(100% / 5);
+`;
+const List = styled.ul``;
+const ListItem = styled.li``;
+const LinkText = styled.a`
+  padding: 15px;
+  font-size: 14px;
+  font-weight: 400;
+  color: #2b3a42;
 `;

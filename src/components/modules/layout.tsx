@@ -24,10 +24,10 @@ const Layout: React.FC<LayoutType> = ({ children }) => {
 export default Layout;
 
 const Main = styled.div`
-  display: flex;
 `;
 const Inner = styled.div`
   margin: 0 auto;
+  display: flex;
   max-width: 1000px;
 `;
 const Content = styled.div`

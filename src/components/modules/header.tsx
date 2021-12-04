@@ -32,7 +32,7 @@ const Header = () => {
         </Title>
         <RightArea>
           {/* <p>{user.email}</p> */}
-          <button onClick={signOut}>ログアウト</button>
+          <Button onClick={signOut}>ログアウト</Button>
         </RightArea>
       </Inner>
     </HeaderLayout>
@@ -41,7 +41,9 @@ const Header = () => {
 
 export default Header;
 
-const HeaderLayout = styled.header``;
+const HeaderLayout = styled.header`
+  background: #2b3a42;
+`;
 const Inner = styled.div`
   margin: 0 auto;
   display: flex;
@@ -52,7 +54,12 @@ const Inner = styled.div`
 `;
 const Title = styled.h1``;
 const Logo = styled.a`
-  font-size: 18px;
+  font-size: 26px;
   font-weight: 700;
+  color: #f3f3f3;
 `;
 const RightArea = styled.div``;
+const Button = styled.button`
+  padding: 5 px 10 px;
+  background: #f3f3f3;
+`;
