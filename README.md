@@ -1,5 +1,5 @@
 # chatter
-url: [https://supabase-todoo.vercel.app/](https://supabase-todoo.vercel.app/)
+url: [https://superchat256864.vercel.app/](https://superchat256864.vercel.app/)
 
 ## 使用技術
 - TypeScript
