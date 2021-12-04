@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../util/supabase";
 import { useRouter } from "next/router";
+import styled from "styled-components";
+import Link from "next/link";
 
 const Header = () => {
   const [userList, setUserList] = useState([]);
@@ -21,11 +23,28 @@ const Header = () => {
     fetch();
   }, []);
   return (
-    <>
-      {/* <p>{user.email}</p> */}
-      <button onClick={signOut}>ログアウト</button>
-    </>
+    <HeaderLayout>
+      <Inner>
+        <Title>
+          <Link href="/" as="/" passHref>
+            <Logo>Superchat</Logo>
+          </Link>
+        </Title>
+        <RightArea>
+          {/* <p>{user.email}</p> */}
+          <button onClick={signOut}>ログアウト</button>
+        </RightArea>
+      </Inner>
+    </HeaderLayout>
   );
 };
 
 export default Header;
+
+const HeaderLayout = styled.header``;
+const Inner = styled.div`
+  display: flex;
+`;
+const Title = styled.header``;
+const Logo = styled.div``;
+const RightArea = styled.div``;
