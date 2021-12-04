@@ -17,12 +17,11 @@ const Header = () => {
       const { data, error }: any = await supabase
         .from("users")
         .select()
-        .contains("id", [user.id]);
+        .eq("id", [user.id]);
       setUserList(data);
     };
     fetch();
   }, []);
-  console.log('userList', userList);
   return (
     <HeaderLayout>
       <Inner>
@@ -32,7 +31,7 @@ const Header = () => {
           </Link>
         </Title>
         <RightArea>
-          {/* <p>{user.email}</p> */}
+          {userList && <p>{userList[0].fullname}</p>}
           <Link href="/editProfile" as="/editProfile" passHref>
             <LinkText>プロフィール編集</LinkText>
           </Link>
