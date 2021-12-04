@@ -38,12 +38,13 @@ export default Sidebar
 
 
 const SidebarArea = styled.aside`
-  padding: 30px 10px 0;
+  padding: 0 10px;
   width: calc(100% / 5);
   border-right: 2px solid #2b3a42;
   box-sizing: border-box;
 `;
 const Title = styled.h2`
+  padding: 15px 0;
   font-size: 18px;
   font-weight: 700;
   color: #2b3a42;

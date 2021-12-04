@@ -90,6 +90,7 @@ export async function getServerSideProps() {
 
 const Main = styled.div``;
 const Title = styled.h2`
+  padding: 15px 0;
   font-size: 18px;
   font-weight: 700;
   color: #2b3a42;
@@ -97,8 +98,12 @@ const Title = styled.h2`
 const Form = styled.form`
   margin-top: 15px;
 `;
-const List = styled.ul``;
-const ListItem = styled.li``;
+const List = styled.ul`
+  margin-top: 10px;
+`;
+const ListItem = styled.li`
+  margin-top: 5px;
+`;
 const Checkbox = styled.input``;
 const Label = styled.label``;
 const Button = styled.button`

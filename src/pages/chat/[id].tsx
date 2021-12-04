@@ -94,6 +94,8 @@ const Message = styled.p`
   font-size: 15px;
   color: #2b3a42;
 `;
-const Form = styled.form``;
+const Form = styled.form`
+  margin-top: 20px;
+`;
 const Input = styled.input``;
 const Button = styled.button``;

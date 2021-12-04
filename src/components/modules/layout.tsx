@@ -28,13 +28,12 @@ const Main = styled.div`
 `;
 const Inner = styled.div`
   margin: 0 auto;
-  padding-top: 30px;
   display: flex;
   max-width: 1000px;
   height: 100%;
 `;
 const Content = styled.div`
-  padding: 30px 10px 0;
+  padding: 0 15px;
   width: calc(100% - (100% / 5));
   box-sizing: border-box;
 `;
