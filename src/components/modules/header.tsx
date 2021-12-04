@@ -16,8 +16,8 @@ const Header = () => {
     const fetch = async () => {
       const { data, error }: any = await supabase
         .from("users")
-        .select("id, fullname, avatarurl")
-        .contains("users", [user.id]);
+        .select()
+        .contains("id", [user.id]);
       setUserList(data);
     };
     fetch();
@@ -33,6 +33,9 @@ const Header = () => {
         </Title>
         <RightArea>
           {/* <p>{user.email}</p> */}
+          <Link href="/editProfile" as="/editProfile" passHref>
+            <LinkText>プロフィール編集</LinkText>
+          </Link>
           <Button onClick={signOut}>ログアウト</Button>
         </RightArea>
       </Inner>
@@ -60,6 +63,7 @@ const Logo = styled.a`
   color: #f3f3f3;
 `;
 const RightArea = styled.div``;
+const LinkText = styled.a``;
 const Button = styled.button`
   padding: 5px 10px;
   background: #f3f3f3;
