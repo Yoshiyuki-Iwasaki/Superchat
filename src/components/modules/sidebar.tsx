@@ -42,8 +42,9 @@ const SidebarArea = styled.aside`
 const List = styled.ul``;
 const ListItem = styled.li``;
 const LinkText = styled.a`
-  padding: 15px;
+  padding: 10px 5px;
+  display: block;
   font-size: 14px;
   font-weight: 400;
-  color: #2b3a42;
+  color: rgb(43, 58, 66);
 `;

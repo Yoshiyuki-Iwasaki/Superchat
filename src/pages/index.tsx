@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from "react";
 import { supabase } from "../components/util/supabase";
 import Layout from '../components/modules/layout';
+import styled from "styled-components";
 
 export type HomeType = {
   users: any;
@@ -45,29 +46,33 @@ const handleChange = e => {
 };
   return (
     <Layout>
-      <h2>チャット一覧</h2>
-      <form onSubmit={e => createChat(e)}>
-        <input
-          placeholder="title"
-          value={title}
-          onChange={e => setInputData({ ...inputData, title: e.target.value })}
-        />
-        <ul>
-          {userList &&
-            userList.map((doc: any, index: number) => (
-              <li key={index}>
-                <input
-                  id={doc.id}
-                  type="checkbox"
-                  onChange={handleChange}
-                  value={checkData}
-                />
-                <label htmlFor={doc.id}>{doc.fullname}</label>
-              </li>
-            ))}
-        </ul>
-        <button onClick={e => createChat(e)}>チャット作成</button>
-      </form>
+      <Main>
+        <Title>チャット一覧</Title>
+        <Form onSubmit={e => createChat(e)}>
+          <input
+            placeholder="title"
+            value={title}
+            onChange={e =>
+              setInputData({ ...inputData, title: e.target.value })
+            }
+          />
+          <List>
+            {userList &&
+              userList.map((doc: any, index: number) => (
+                <ListItem key={index}>
+                  <Checkbox
+                    id={doc.id}
+                    type="checkbox"
+                    onChange={handleChange}
+                    value={checkData}
+                  />
+                  <Label htmlFor={doc.id}>{doc.fullname}</Label>
+                </ListItem>
+              ))}
+          </List>
+          <Button onClick={e => createChat(e)}>チャット作成</Button>
+        </Form>
+      </Main>
     </Layout>
   );
 };
@@ -80,3 +85,20 @@ export async function getServerSideProps() {
     props: { users },
   };
 }
+
+
+
+const Main = styled.div`
+  padding-top: 30px;
+`;
+const Title = styled.h2`
+  font-size: 18px;
+  font-weight: 700;
+  color: #2b3a42;
+`;
+const Form = styled.form``;
+const List = styled.ul``;
+const ListItem = styled.li``;
+const Checkbox = styled.input``;
+const Label = styled.label``;
+const Button = styled.button``;
