@@ -11,7 +11,6 @@ const SignIn = () => {
       const { user, session, error } = await supabase.auth.signIn({
         provider: "github",
       });
-      console.log('user', user);
       if (error) throw error;
     } catch (error) {
       alert(error.message);

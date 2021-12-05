@@ -20,9 +20,6 @@ const Header = () => {
     fetch();
   }, []);
 
-  console.log("userList", userList);
-  console.log("userList[0]", userList[0]);
-
   const signOut = () => {
     supabase.auth.signOut();
     router.push("./signin");
@@ -36,7 +33,7 @@ const Header = () => {
           </Link>
         </Title>
         <RightArea>
-          {/* {userList[0].id && <p>{userList[0].id}</p>} */}
+          {userList && <p>{userList[0].id}</p>}
           <Link href="/editProfile" as="/editProfile" passHref>
             <LinkText>プロフィール編集</LinkText>
           </Link>
