@@ -37,7 +37,7 @@ const ChatDetail: React.FC<ChatDetailType> = ({ chat, chatData }) => {
   return (
     <Layout>
       <Title>{chatData.title}</Title>
-      {/* <ChatList posts={posts} /> */}
+      <ChatList posts={posts} />
       <ChatForm chatData={chatData} />
     </Layout>
   );
