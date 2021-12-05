@@ -14,7 +14,10 @@ const Like: React.FC<LikeType> = ({ id }) => {
   useEffect(() => {
     countLike();
     loadingLike();
-  }, []);
+  }, [likeCount, done]);
+
+  console.log("likeCount", likeCount);
+  console.log("done", done);
 
   const countLike = async () => {
     try {
