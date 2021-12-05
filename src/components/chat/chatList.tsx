@@ -16,6 +16,9 @@ const ChatList: React.FC<ChatListType> = ({ chatData }) => {
   const [inputData, setInputData] = useState({ message: "" });
   const { message } = inputData;
 
+  console.log("posts", posts);
+  console.log("inputData", inputData);
+
   const createPost = async e => {
     if (!message) return;
     e.preventDefault();
@@ -24,6 +27,7 @@ const ChatList: React.FC<ChatListType> = ({ chatData }) => {
         .from("posts")
         .insert([{ message, user_id: user.id, chat_id: chatData.id }])
         .single();
+      fetchPost();
       if (error) throw new Error();
     } catch (error) {
       alert(error.message);
