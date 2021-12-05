@@ -15,7 +15,7 @@ const ChatList: React.FC<ChatListType> = ({ chatData }) => {
 
   useEffect(() => {
     fetchPost();
-  }, [posts]);
+  }, []);
 
   const fetchPost = async () => {
     try {
