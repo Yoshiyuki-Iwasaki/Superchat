@@ -93,25 +93,18 @@ const List = styled.ul`
   visibility: hidden;
   transition: all 0.6s;
 
-  &:before {
-    content: "";
-    position: absolute;
-    top: -4px;
-    right: 25px;
-    width: 8px;
-    height: 8px;
-    border-top: 1px solid gray;
-    border-right: 1px solid gray;
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-  }
-
   ${Hover}:hover & {
     opacity: 1;
     visibility: visible;
   }
 `;
-const ListItem = styled.li``;
+const ListItem = styled.li`
+  border-top: 1px solid #2b3a42;
+
+  &:first-child {
+    border-top: none;
+  }
+`;
 const Avatar = styled.div`
   display: flex;
   align-items: center;
@@ -127,15 +120,18 @@ const UserName = styled.p`
   color: #f3f3f3;
 `;
 const LinkText = styled.a`
-  padding: 5px 10px;
+  padding: 10px;
   text-align: center;
   width: 200px;
   display: inline-block;
   background: #f3f3f3;
+  font-size: 13px;
 `;
 const Button = styled.button`
   padding: 5px 10px;
   display: block;
   width: 100%;
   background: #f3f3f3;
+  cursor: pointer;
+  font-size: 13px;
 `;

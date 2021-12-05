@@ -107,6 +107,7 @@ const ChaUser = styled.p`
   color: #2b3a42;
 `;
 const Input = styled.input`
+  margin-top: 10px;
 `;
 const List = styled.ul`
   margin-top: 10px;
