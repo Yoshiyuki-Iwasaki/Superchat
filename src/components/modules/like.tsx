@@ -12,21 +12,41 @@ const Like: React.FC<LikeType> = ({ id }) => {
   const [likeCount, setlikeCount] = useState<number>(0);
 
   useEffect(() => {
-    const fetch = async () => {
-      try {
-        const { data, error } = await supabase
-          .from("likes")
-          .select()
-          .match({ post_id: id, user_id: user.id });
-        console.log('data', data);
-        console.log("data[0]", data[0]);
-        if (error) throw new Error();
-      } catch (error) {
-        alert(error.message);
-      }
-    };
-    fetch();
+    countLike();
+    loadingLike();
   }, []);
+
+  const countLike = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("likes")
+        .select()
+        .match({ post_id: id });
+      console.log("countLike data", data);
+      console.log("countLike data[0]", data[0]);
+      console.log("countLike data.length", data.length);
+      setlikeCount(data.length);
+      if (error) throw new Error();
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
+  const loadingLike = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("likes")
+        .select()
+        .match({ post_id: id, user_id: user.id });
+      console.log("loadingLike data", data);
+      console.log("loadingLike data[0]", data[0]);
+      if (data[0]) { setDone(true); }
+      else { setDone(false); }
+      if (error) throw new Error();
+    } catch (error) {
+      alert(error.message);
+    }
+  };
 
   const clickLikeFunction = async e => {
     e.preventDefault();
@@ -43,8 +63,12 @@ const Like: React.FC<LikeType> = ({ id }) => {
   return (
     <>
       <LikeArea>
-        <Text onClick={e => clickLikeFunction(e)}>いいね</Text>
-        <Count>0</Count>
+        {!done ? (
+          <Text onClick={e => clickLikeFunction(e)}>いいね</Text>
+        ) : (
+          <Text>いいね済み</Text>
+        )}
+        <Count>{likeCount}</Count>
       </LikeArea>
     </>
   );
