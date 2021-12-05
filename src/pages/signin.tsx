@@ -16,12 +16,29 @@ const SignIn = () => {
     }
   };
 
+  const handleTwitterSignIn = async e => {
+    e.preventDefault();
+    try {
+      const { user, session, error } = await supabase.auth.signIn({
+        provider: "twitter",
+      });
+      if (error) throw error;
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   return (
     <>
       <Main>
         <Inner>
           <ButtonArea>
-            <Button onClick={e => handleGithubSignIn(e)}>Githubログイン</Button>
+            <GithubButton onClick={e => handleGithubSignIn(e)}>
+              Githubログイン
+            </GithubButton>
+            <TwitterButton onClick={e => handleTwitterSignIn(e)}>
+              Twitterログイン
+            </TwitterButton>
           </ButtonArea>
         </Inner>
       </Main>
@@ -36,7 +53,8 @@ const Inner = styled.div`
   margin: 0 auto;
   position: relative;
   display: flex;
-  max-width: 1000px;
+  width: 100vw;
+  height: 100vh;
 `;
 const ButtonArea = styled.div`
   position: absolute;
@@ -46,5 +64,15 @@ const ButtonArea = styled.div`
 `;
 const Button = styled.button`
   padding: 5px 10px;
+  font-size: 14px;
+  color: #f3f3f3;
+  font-weight: 700;
+`;
+
+const GithubButton = styled(Button)`
   background: #24292f;
+`;
+
+const TwitterButton = styled(Button)`
+  background: #1da1f2;
 `;
