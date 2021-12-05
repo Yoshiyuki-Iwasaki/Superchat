@@ -10,7 +10,7 @@ const SignIn = () => {
       const { user, session, error } = await supabase.auth.signIn({
         provider: "github",
       });
-      if (error) throw error;
+      if (error) throw new Error();
     } catch (error) {
       alert(error.message);
     }
@@ -22,7 +22,7 @@ const SignIn = () => {
       const { user, session, error } = await supabase.auth.signIn({
         provider: "twitter",
       });
-      if (error) throw error;
+      if (error) throw new Error();
     } catch (error) {
       alert(error.message);
     }

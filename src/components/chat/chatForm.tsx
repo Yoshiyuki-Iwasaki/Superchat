@@ -14,10 +14,15 @@ const ChatForm: React.FC<ChatFormType> = ({ chatData }) => {
   const createPost = async e => {
     if (!message) return;
     e.preventDefault();
-    const { data, error } = await supabase
-      .from("posts")
-      .insert([{ message, user_id: user.id, chat_id: chatData.id }])
-      .single();
+    try {
+      const { error } = await supabase
+        .from("posts")
+        .insert([{ message, user_id: user.id, chat_id: chatData.id }])
+        .single();
+      if (error) throw new Error();
+    } catch (error) {
+      alert(error.message);
+    }
     setInputData({ message: "" });
   };
 
