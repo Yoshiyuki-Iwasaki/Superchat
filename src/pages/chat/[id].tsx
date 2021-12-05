@@ -10,7 +10,7 @@ export type ChatDetailType = {
 };
 
 const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
-  const [posts, setPosts] = useState({});
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     fetchPost();
