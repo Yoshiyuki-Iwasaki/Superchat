@@ -49,6 +49,7 @@ const handleChange = e => {
       <Main>
         <Title>チャット作成</Title>
         <Form onSubmit={e => createChat(e)}>
+          <ChatTitle>チャットタイトル</ChatTitle>
           <Input
             placeholder="title"
             value={title}
@@ -56,6 +57,7 @@ const handleChange = e => {
               setInputData({ ...inputData, title: e.target.value })
             }
           />
+          <ChaUser>ユーザー</ChaUser>
           <List>
             {userList &&
               userList.map((doc: any, index: number) => (
@@ -96,6 +98,14 @@ const Title = styled.h2`
 const Form = styled.form`
   margin-top: 15px;
 `;
+const ChatTitle = styled.p`
+  font-size: 14px;
+  color: #2b3a42;
+`;
+const ChaUser = styled.p`
+  font-size: 14px;
+  color: #2b3a42;
+`;
 const Input = styled.input`
 `;
 const List = styled.ul`
@@ -103,13 +113,18 @@ const List = styled.ul`
 `;
 const ListItem = styled.li`
   margin-top: 5px;
+  display: flex;
+  align-items: center;
 `;
 const Checkbox = styled.input``;
-const Label = styled.label``;
+const Label = styled.label`
+  margin-left: 10px;
+  font-size: 14px;
+`;
 const Button = styled.button`
   margin-top: 10px;
   padding: 5px 10px;
   background: #2b3a42;
   font-size: 14px;
-  color: #fff;
+  color: #f3f3f3;
 `;

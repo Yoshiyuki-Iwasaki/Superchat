@@ -82,30 +82,6 @@ const Logo = styled.a`
   color: #f3f3f3;
 `;
 const RightArea = styled.div``;
-const Avatar = styled.div`
-  display: flex;
-  align-items: center;
-  flex-direction: row-reverse;
-`;
-const AvatarImage = styled.figure`
-  border-radius: 25px;
-`;
-const UserName = styled.p`
-  margin-right: 15px;
-  font-size: 24px;
-  font-weight: 700;
-  color: #f3f3f3;
-`;
-const LinkText = styled.a`
-  padding: 5px 10px;
-  width: 200px;
-  display: inline-block;
-  background: #f3f3f3;
-`;
-const Button = styled.button`
-  padding: 5px 10px;
-  background: #f3f3f3;
-`;
 const Hover = styled.div`
   position: relative;
 `;
@@ -136,3 +112,30 @@ const List = styled.ul`
   }
 `;
 const ListItem = styled.li``;
+const Avatar = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+`;
+const AvatarImage = styled.figure`
+  border-radius: 25px;
+`;
+const UserName = styled.p`
+  margin-right: 15px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #f3f3f3;
+`;
+const LinkText = styled.a`
+  padding: 5px 10px;
+  text-align: center;
+  width: 200px;
+  display: inline-block;
+  background: #f3f3f3;
+`;
+const Button = styled.button`
+  padding: 5px 10px;
+  display: block;
+  width: 100%;
+  background: #f3f3f3;
+`;
