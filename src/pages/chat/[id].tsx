@@ -92,11 +92,16 @@ const Date = styled.p`
 `;
 const Message = styled.p`
   margin-top: 10px;
-  font-size: 15px;
+  font-size: 14px;
   color: #2b3a42;
 `;
 const Form = styled.form`
   margin-top: 20px;
 `;
 const Input = styled.input``;
-const Button = styled.button``;
+const Button = styled.button`
+  padding: 5px 10px;
+  background: #2b3a42;
+  font-size: 14px;
+  color: #fff;
+`;
