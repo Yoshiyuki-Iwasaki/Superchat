@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { formatDate } from "../../util/date";
 import Like from '../modules/like';
+import { supabase } from "../../util/supabase";
 
 export type ChatListType = {
   chatData: any;
@@ -13,8 +14,23 @@ const ChatList: React.FC<ChatListType> = ({ chatData }) => {
   console.log("chatData", chatData);
 
   useEffect(() => {
-    setPosts(chatData);
-  }, []);
+    fetchPost();
+  }, [posts]);
+
+  const fetchPost = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("posts")
+        .select()
+        .eq("chat_id", chatData.id);
+      setPosts(data);
+      console.log("data", data);
+      if (error) throw new Error();
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
 
   console.log('posts', posts);
 
