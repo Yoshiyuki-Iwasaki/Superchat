@@ -25,6 +25,7 @@ export default ChatDetail
 
 export async function getServerSideProps(context) {
   const { id } = context.query;
+  console.log('id', id);
   const chat = await supabase.from("chat").select();
   const chatData = chat.data.find(chat => chat.id == id);
 
