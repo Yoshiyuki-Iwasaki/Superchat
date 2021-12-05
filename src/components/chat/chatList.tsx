@@ -3,13 +3,31 @@ import styled from "styled-components";
 import { formatDate } from "../../util/date";
 import Like from '../modules/like';
 import { supabase } from "../../util/supabase";
+import router from "next/router";
 
 export type ChatListType = {
-  posts: any;
+  chatData: any;
 };
 
-const ChatList: React.FC<ChatListType> = ({ posts }) => {
-  console.log("posts", posts);
+const ChatList: React.FC<ChatListType> = ({ chatData }) => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetchPost();
+  }, [chatData]);
+
+  const fetchPost = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("posts")
+        .select()
+        .eq("chat_id", router.query.id);
+      setPosts(data);
+      if (error) throw new Error();
+    } catch (error) {
+      alert(error.message);
+    }
+  };
 
   return (
     <List>

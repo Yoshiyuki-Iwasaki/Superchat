@@ -4,41 +4,18 @@ import Layout from '../../components/modules/layout'
 import styled from "styled-components";
 import ChatForm from "../../components/chat/chatForm";
 import ChatList from "../../components/chat/chatList";
-import router from 'next/router'
+
 
 export type ChatDetailType = {
-  chat: any;
   chatData: any;
 };
 
-const ChatDetail: React.FC<ChatDetailType> = ({ chat, chatData }) => {
-  const [posts, setPosts] = useState([]);
-  console.log("router.query.id", router.query.id);
-  console.log("chat", chat);
-  console.log("chatData", chatData);
+const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
 
-  useEffect(() => {
-    fetchPost();
-  }, [chatData]);
-
-  const fetchPost = async () => {
-    try {
-      const { data, error } = await supabase
-        .from("posts")
-        .select()
-        .eq("chat_id", router.query.id);
-      setPosts(data);
-      console.log("data", data);
-      if (error) throw new Error();
-    } catch (error) {
-      alert(error.message);
-    }
-  };
   return (
     <Layout>
       <Title>{chatData.title}</Title>
-      <ChatList posts={posts} />
-      <ChatForm chatData={chatData} />
+      <ChatList chatData={chatData} />
     </Layout>
   );
 };
@@ -51,7 +28,7 @@ export async function getServerSideProps(context) {
   const chatData = chat.data.find(chat => chat.id == id);
 
   return {
-    props: { chat, chatData },
+    props: { chatData },
   };
 }
 
