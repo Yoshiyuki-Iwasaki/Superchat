@@ -7,12 +7,15 @@ import ChatList from "../../components/chat/chatList";
 import router from 'next/router'
 
 export type ChatDetailType = {
+  chat: any;
   chatData: any;
 };
 
-const ChatDetail: React.FC<ChatDetailType> = () => {
+const ChatDetail: React.FC<ChatDetailType> = ({ chat, chatData }) => {
   const [posts, setPosts] = useState([]);
   console.log("router.query.id", router.query.id);
+  console.log("chat", chat);
+  console.log("chatData", chatData);
 
   useEffect(() => {
     fetchPost();
@@ -33,14 +36,25 @@ const ChatDetail: React.FC<ChatDetailType> = () => {
   };
   return (
     <Layout>
-    {/* <Title>{chatData.title}</Title> */}
-    {/* <ChatList posts={posts} /> */}
-    {/* <ChatForm chatData={chatData} /> */}
+      <Title>{chatData.title}</Title>
+      {/* <ChatList posts={posts} /> */}
+      {/* <ChatForm chatData={chatData} /> */}
     </Layout>
   );
 };
 
 export default ChatDetail;
+
+export async function getServerSideProps(context) {
+  const { id } = context.query;
+  const chat = await supabase.from("chat").select();
+  const chatData = chat.data.find(chat => chat.id == id);
+
+  return {
+    props: { chat, chatData },
+  };
+}
+
 
 const Title = styled.h2`
   padding: 15px 0px;
