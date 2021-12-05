@@ -48,8 +48,6 @@ export async function getServerSideProps(context) {
   const { id } = context.query;
   const chat = await supabase.from("chat").select();
   const chatData = chat.data.find(chat => chat.id == id);
-  console.log('chat', chat);
-  console.log("chatData", chatData);
 
   return {
     props: { chatData },
