@@ -1,18 +1,16 @@
-import React, { useState ,useEffect} from 'react'
+ import React, { useState ,useEffect} from 'react'
 import { supabase } from "../../util/supabase";
-import { formatDate } from "../../util/date"
 import Layout from '../../components/modules/layout'
 import styled from "styled-components";
+import ChatForm from "../../components/chat/chatForm";
+import ChatList from "../../components/chat/chatList";
 
 export type ChatDetailType = {
   chatData: any;
 };
 
 const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
-  const user = supabase.auth.user();
   const [posts, setPosts] = useState([]);
-  const [inputData, setInputData] = useState({ message: "" });
-  const { message } = inputData;
 
   useEffect(() => {
     const fetch = async () => {
@@ -25,40 +23,11 @@ const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
     fetch();
   }, []);
 
-  const createPost = async e => {
-    if (!message) return;
-    e.preventDefault();
-    const { data, error } = await supabase
-      .from("posts")
-      .insert([{ message, user_id: user.id, chat_id: chatData.id }])
-      .single();
-    setInputData({ message: "" });
-  };
-
-  const handleChange = e => {
-    setInputData({ ...inputData, message: e.target.value });
-  };
-
   return (
     <Layout>
       <Title>{chatData.title}</Title>
-      <List>
-        {posts &&
-          posts.map((post: any, index: number) => (
-            <ListItem key={index}>
-              <Date>{formatDate(post.created_at)}</Date>
-              <Message>{post.message}</Message>
-            </ListItem>
-          ))}
-      </List>
-      <Form onSubmit={e => createPost(e)}>
-        <Input
-          placeholder="message"
-          value={message}
-          onChange={e => handleChange(e)}
-        />
-        <Button onClick={e => createPost(e)}>Create Post</Button>
-      </Form>
+      <ChatList posts={posts} />
+      <ChatForm chatData={chatData} />
     </Layout>
   );
 };
@@ -81,27 +50,4 @@ const Title = styled.h2`
   font-size: 18px;
   font-weight: 700;
   color: #2b3a42;
-`;
-const List = styled.ul``;
-const ListItem = styled.li`
-  padding: 15px;
-`;
-const Date = styled.p`
-  font-size: 12px;
-  color: #2b3a42;
-`;
-const Message = styled.p`
-  margin-top: 10px;
-  font-size: 14px;
-  color: #2b3a42;
-`;
-const Form = styled.form`
-  margin-top: 20px;
-`;
-const Input = styled.input``;
-const Button = styled.button`
-  padding: 5px 10px;
-  background: #2b3a42;
-  font-size: 14px;
-  color: #f3f3f3;
 `;

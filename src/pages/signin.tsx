@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const SignIn = () => {
 
-  const handleGithubSignIn = async e => {
+  const handleGitHubSignIn = async e => {
     e.preventDefault();
     try {
       const { user, session, error } = await supabase.auth.signIn({
@@ -33,9 +33,9 @@ const SignIn = () => {
       <Main>
         <Inner>
           <ButtonArea>
-            <GithubButton onClick={e => handleGithubSignIn(e)}>
-              Githubログイン
-            </GithubButton>
+            <GitHubButton onClick={e => handleGitHubSignIn(e)}>
+              GitHubログイン
+            </GitHubButton>
             <TwitterButton onClick={e => handleTwitterSignIn(e)}>
               Twitterログイン
             </TwitterButton>
