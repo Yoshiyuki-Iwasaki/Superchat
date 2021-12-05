@@ -12,26 +12,25 @@ export type ChatDetailType = {
 
 const ChatDetail: React.FC<ChatDetailType> = () => {
   const [posts, setPosts] = useState([]);
-  console.log('router', router);
+  console.log("router.query.id", router.query.id);
 
-  // useEffect(() => {
-  //   fetchPost();
-  //   console.log("chatData", chatData);
-  // }, []);
+  useEffect(() => {
+    fetchPost();
+  }, []);
 
-  // const fetchPost = async () => {
-  //   try {
-  //     const { data, error } = await supabase
-  //       .from("posts")
-  //       .select()
-  //       .eq("chat_id", chatData.id);
-  //     setPosts(data);
-  //     console.log("data", data);
-  //     if (error) throw new Error();
-  //   } catch (error) {
-  //     alert(error.message);
-  //   }
-  // };
+  const fetchPost = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("posts")
+        .select()
+        .eq("chat_id", router.query.id);
+      setPosts(data);
+      console.log("data", data);
+      if (error) throw new Error();
+    } catch (error) {
+      alert(error.message);
+    }
+  };
   return (
     <Layout>
     {/* <Title>{chatData.title}</Title> */}
