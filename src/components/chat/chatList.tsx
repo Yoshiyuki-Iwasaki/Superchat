@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { formatDate } from "../../util/date";
-import { supabase } from "../../util/supabase";
 import Like from '../modules/like';
 
 export type ChatListType = {
@@ -15,18 +14,16 @@ const ChatList: React.FC<ChatListType> = ({ chatData }) => {
     setPosts(chatData);
   }, []);
 
-  console.log("chatData", chatData);
-  console.log("posts", posts);
   return (
     <List>
-      {posts &&
+      {/* {posts &&
         posts.map((post: any, index: number) => (
           <ListItem key={index}>
             <Date>{formatDate(post.created_at)}</Date>
             <Message>{post.message}</Message>
             <Like id={post.id} />
           </ListItem>
-        ))}
+        ))} */}
     </List>
   );
 };
