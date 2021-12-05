@@ -37,10 +37,12 @@ const Header = () => {
           <Hover>
             <Avatar>
               <AvatarImage>
-                <Image src={`/avatar.png`} width={50} height={50} />
+                <Image src={`/avatar.png`} width={40} height={40} />
               </AvatarImage>
               {userList[0] && (
-                <p>{userList[0].fullname ? userList[0].fullname : "noname"}</p>
+                <UserName>
+                  {userList[0].fullname ? userList[0].fullname : "noname"}
+                </UserName>
               )}
             </Avatar>
             <List>
@@ -80,14 +82,26 @@ const Logo = styled.a`
   color: #f3f3f3;
 `;
 const RightArea = styled.div``;
+const Avatar = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+`;
 const AvatarImage = styled.figure`
   border-radius: 25px;
 `;
-const Avatar = styled.div`
-  display: flex;
-  flex-direction: row-reverse;
+const UserName = styled.p`
+  margin-right: 15px;
+  font-size: 24px;
+  font-weight: 700;
+  color: #f3f3f3;
 `;
-const LinkText = styled.a``;
+const LinkText = styled.a`
+  padding: 5px 10px;
+  width: 200px;
+  display: inline-block;
+  background: #f3f3f3;
+`;
 const Button = styled.button`
   padding: 5px 10px;
   background: #f3f3f3;
