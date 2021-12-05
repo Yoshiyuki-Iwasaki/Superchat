@@ -15,7 +15,7 @@ const ChatList: React.FC<ChatListType> = ({ chatData }) => {
 
   useEffect(() => {
     fetchPost();
-  }, [chatData, posts]);
+  }, [chatData]);
 
   console.log('posts', posts);
   console.log('chatData', chatData);
