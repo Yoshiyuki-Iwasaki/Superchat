@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { supabase } from "../util/supabase";
+import { supabase } from "../../../util/supabase";
 import styled from "styled-components";
-import Layout from "../components/modules/layout";
+import Layout from "../../../components/modules/layout";
 
 const EditProfile = () => {
   const user = supabase.auth.user();

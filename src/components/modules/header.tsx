@@ -34,18 +34,26 @@ const Header = () => {
           </Link>
         </Title>
         <RightArea>
-          <Avatar>
-            <AvatarImage>
-              <Image src={`/avatar.png`} width={100} height={100} />
-            </AvatarImage>
-            {userList[0] && (
-              <p>{userList[0].fullname ? userList[0].fullname : "noname"}</p>
-            )}
-          </Avatar>
-          <Link href="/profile/edit" as="/profile/edit" passHref>
-            <LinkText>プロフィール編集</LinkText>
-          </Link>
-          <Button onClick={signOut}>ログアウト</Button>
+          <Hover>
+            <Avatar>
+              <AvatarImage>
+                <Image src={`/avatar.png`} width={50} height={50} />
+              </AvatarImage>
+              {userList[0] && (
+                <p>{userList[0].fullname ? userList[0].fullname : "noname"}</p>
+              )}
+            </Avatar>
+            <List>
+              <ListItem>
+                <Link href="/profile/edit" as="/profile/edit" passHref>
+                  <LinkText>プロフィール編集</LinkText>
+                </Link>
+              </ListItem>
+              <ListItem>
+                <Button onClick={signOut}>ログアウト</Button>
+              </ListItem>
+            </List>
+          </Hover>
         </RightArea>
       </Inner>
     </HeaderLayout>
@@ -72,10 +80,45 @@ const Logo = styled.a`
   color: #f3f3f3;
 `;
 const RightArea = styled.div``;
-const AvatarImage = styled.figure``;
-const Avatar = styled.div``;
+const AvatarImage = styled.figure`
+  border-radius: 25px;
+`;
+const Avatar = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+`;
 const LinkText = styled.a``;
 const Button = styled.button`
   padding: 5px 10px;
   background: #f3f3f3;
 `;
+const Hover = styled.div`
+  position: relative;
+`;
+const List = styled.ul`
+  position: absolute;
+  top: 50px;
+  right: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.6s;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: -4px;
+    right: 25px;
+    width: 8px;
+    height: 8px;
+    border-top: 1px solid gray;
+    border-right: 1px solid gray;
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+
+  ${Hover}:hover & {
+    opacity: 1;
+    visibility: visible;
+  }
+`;
+const ListItem = styled.li``;
