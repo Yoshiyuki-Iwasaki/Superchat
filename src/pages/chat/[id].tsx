@@ -14,6 +14,7 @@ const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
 
   useEffect(() => {
     fetchPost();
+    console.log("chatData", chatData);
   }, []);
 
   const fetchPost = async () => {
@@ -45,6 +46,8 @@ export async function getServerSideProps(context) {
   const { id } = context.query;
   const chat = await supabase.from("chat").select();
   const chatData = chat.data.find(chat => chat.id == id);
+  console.log('id', id);
+  console.log('chatData', chatData);
 
   return {
     props: { chatData },
