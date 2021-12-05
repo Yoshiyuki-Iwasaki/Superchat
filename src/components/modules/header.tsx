@@ -36,7 +36,11 @@ const Header = () => {
         <RightArea>
           <Avatar>
             <AvatarImage>
-              <Image src="./avatar.png" width={100} height={100} />
+              <Image
+                src={`/avatar.png`}
+                width={100}
+                height={100}
+              />
             </AvatarImage>
             {userList[0] && (
               <p>{userList[0].fullname ? userList[0].fullname : "noname"}</p>
