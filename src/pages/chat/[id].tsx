@@ -2,7 +2,6 @@
 import { supabase } from "../../util/supabase";
 import Layout from '../../components/modules/layout'
 import styled from "styled-components";
-import ChatForm from "../../components/chat/chatForm";
 import ChatList from "../../components/chat/chatList";
 
 

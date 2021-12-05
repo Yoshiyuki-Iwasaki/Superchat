@@ -4,6 +4,7 @@ import { formatDate } from "../../util/date";
 import Like from '../modules/like';
 import { supabase } from "../../util/supabase";
 import router from "next/router";
+import ChatForm from "./chatForm";
 
 export type ChatListType = {
   chatData: any;
@@ -30,16 +31,19 @@ const ChatList: React.FC<ChatListType> = ({ chatData }) => {
   };
 
   return (
-    <List>
-      {posts &&
-        posts.map((post: any, index: number) => (
-          <ListItem key={index}>
-            <Date>{formatDate(post.created_at)}</Date>
-            <Message>{post.message}</Message>
-            <Like id={post.id} />
-          </ListItem>
-        ))}
-    </List>
+    <>
+      <List>
+        {posts &&
+          posts.map((post: any, index: number) => (
+            <ListItem key={index}>
+              <Date>{formatDate(post.created_at)}</Date>
+              <Message>{post.message}</Message>
+              <Like id={post.id} />
+            </ListItem>
+          ))}
+      </List>
+      <ChatForm chatData={chatData} />
+    </>
   );
 };
 
