@@ -7,10 +7,11 @@ import ChatList from "../../components/chat/chatList";
 
 export type ChatDetailType = {
   chatData: any;
+  id: any;
 };
 
-const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
-
+const ChatDetail: React.FC<ChatDetailType> = ({ chatData, id }) => {
+  console.log('id', id);
   return (
     <Layout>
       <Title>{chatData.title}</Title>
@@ -25,12 +26,11 @@ export default ChatDetail
 
 export async function getServerSideProps(context) {
   const { id } = context.query;
-  console.log('id', id);
   const chat = await supabase.from("chat").select();
   const chatData = chat.data.find(chat => chat.id == id);
 
   return {
-    props: { chatData },
+    props: { chatData, id },
   };
 }
 
