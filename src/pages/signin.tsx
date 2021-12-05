@@ -57,13 +57,16 @@ const Inner = styled.div`
   height: 100vh;
 `;
 const ButtonArea = styled.div`
+  padding: 15px;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
+  border: 1px solid #2b3a42;
 `;
 const Button = styled.button`
   padding: 5px 10px;
+  display: block;
   font-size: 14px;
   color: #f3f3f3;
   font-weight: 700;
@@ -74,5 +77,6 @@ const GithubButton = styled(Button)`
 `;
 
 const TwitterButton = styled(Button)`
+  margin-top: 10px;
   background: #1da1f2;
 `;
