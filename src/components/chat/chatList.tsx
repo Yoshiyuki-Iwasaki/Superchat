@@ -15,7 +15,7 @@ const ChatList: React.FC<ChatListType> = ({ posts }) => {
           <ListItem key={index}>
             <Date>{formatDate(post.created_at)}</Date>
             <Message>{post.message}</Message>
-            <Like id={posts.id} />
+            <Like id={post.id} />
           </ListItem>
         ))}
     </List>
