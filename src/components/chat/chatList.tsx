@@ -17,6 +17,9 @@ const ChatList: React.FC<ChatListType> = ({ chatData }) => {
     fetchPost();
   }, [chatData, posts]);
 
+  console.log('posts', posts);
+  console.log('chatData', chatData);
+
   const fetchPost = async () => {
     try {
       const { data, error } = await supabase
