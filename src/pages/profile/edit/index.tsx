@@ -41,7 +41,7 @@ const EditProfile = () => {
               setInputData({ ...inputData, fullname: e.target.value })
             }
           />
-          <Button onClick={e => UpdateProfile(e)}>チャット作成</Button>
+          <Button onClick={e => UpdateProfile(e)}>プロフィール編集</Button>
         </Form>
       </Main>
     </Layout>

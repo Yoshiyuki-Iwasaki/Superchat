@@ -8,6 +8,7 @@ export type LikeType = {
 
 const Like: React.FC<LikeType> = ({ posts }) => {
   const user = supabase.auth.user();
+  console.log('posts', posts);
 
   const clickLikeFunction = async e => {
     e.preventDefault();
