@@ -10,10 +10,29 @@ export type ChatDetailType = {
 };
 
 const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    fetchPost();
+  }, []);
+
+  const fetchPost = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("posts")
+        .select()
+        .eq("chat_id", chatData.id);
+      setPosts(data);
+      console.log("data", data);
+      if (error) throw new Error();
+    } catch (error) {
+      alert(error.message);
+    }
+  };
   return (
     <Layout>
       <Title>{chatData.title}</Title>
-      <ChatList chatData={chatData} />
+      <ChatList posts={posts} />
       <ChatForm chatData={chatData} />
     </Layout>
   );

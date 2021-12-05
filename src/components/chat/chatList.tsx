@@ -5,34 +5,11 @@ import Like from '../modules/like';
 import { supabase } from "../../util/supabase";
 
 export type ChatListType = {
-  chatData: any;
+  posts: any;
 };
 
-const ChatList: React.FC<ChatListType> = ({ chatData }) => {
-  const [posts, setPosts] = useState([]);
-
-  console.log("chatData", chatData);
-
-  useEffect(() => {
-    fetchPost();
-  }, []);
-
-  const fetchPost = async () => {
-    try {
-      const { data, error } = await supabase
-        .from("posts")
-        .select()
-        .eq("chat_id", chatData.id);
-      setPosts(data);
-      console.log("data", data);
-      if (error) throw new Error();
-    } catch (error) {
-      alert(error.message);
-    }
-  };
-
-
-  console.log('posts', posts);
+const ChatList: React.FC<ChatListType> = ({ posts }) => {
+  console.log("posts", posts);
 
   return (
     <List>
