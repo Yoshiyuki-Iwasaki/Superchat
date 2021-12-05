@@ -28,6 +28,7 @@ const Main = styled.div`
 `;
 const Inner = styled.div`
   margin: 0 auto;
+  padding: 0 15px;
   display: flex;
   max-width: 1000px;
   height: 100%;

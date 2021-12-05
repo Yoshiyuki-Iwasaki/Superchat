@@ -1,10 +1,19 @@
 import React from 'react'
+import { supabase } from "../../util/supabase";
 import styled from "styled-components";
 
-const Like = () => {
-  const clickLikeFunction = e => {
+export type LikeType = {
+  posts: any;
+};
+
+const Like: React.FC<LikeType> = ({ posts }) => {
+  const user = supabase.auth.user();
+  const clickLikeFunction = async e => {
     e.preventDefault();
-    console.log('testtest')
+    const { data, error } = await supabase
+      .from("likes")
+      .insert([{ post_id: posts.id, user_id: user.id }])
+      .single();
   };
   return (
     <>
@@ -14,9 +23,9 @@ const Like = () => {
       </LikeArea>
     </>
   );
-}
+};
 
-export default Like
+export default Like;
 
 const LikeArea = styled.div`
   margin-top: 5px;
