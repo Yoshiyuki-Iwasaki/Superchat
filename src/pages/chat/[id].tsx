@@ -7,11 +7,9 @@ import ChatList from "../../components/chat/chatList";
 
 export type ChatDetailType = {
   chatData: any;
-  id: any;
 };
 
-const ChatDetail: React.FC<ChatDetailType> = ({ chatData, id }) => {
-  console.log('id', id);
+const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
   return (
     <Layout>
       <Title>{chatData.title}</Title>
@@ -30,7 +28,7 @@ export async function getServerSideProps(context) {
   const chatData = chat.data.find(chat => chat.id == id);
 
   return {
-    props: { chatData, id },
+    props: { chatData },
   };
 }
 
