@@ -19,7 +19,7 @@ const ChatDetail: React.FC<ChatDetailType> = ({ chat, chatData }) => {
 
   useEffect(() => {
     fetchPost();
-  }, []);
+  }, [chatData]);
 
   const fetchPost = async () => {
     try {
@@ -38,7 +38,7 @@ const ChatDetail: React.FC<ChatDetailType> = ({ chat, chatData }) => {
     <Layout>
       <Title>{chatData.title}</Title>
       {/* <ChatList posts={posts} /> */}
-      {/* <ChatForm chatData={chatData} /> */}
+      <ChatForm chatData={chatData} />
     </Layout>
   );
 };
