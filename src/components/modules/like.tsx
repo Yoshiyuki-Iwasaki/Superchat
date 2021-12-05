@@ -8,12 +8,15 @@ export type LikeType = {
 
 const Like: React.FC<LikeType> = ({ posts }) => {
   const user = supabase.auth.user();
+
   const clickLikeFunction = async e => {
     e.preventDefault();
     const { data, error } = await supabase
       .from("likes")
       .insert([{ post_id: posts.id, user_id: user.id }])
       .single();
+    console.log('error', error);
+    console.log("data", data);
   };
   return (
     <>
