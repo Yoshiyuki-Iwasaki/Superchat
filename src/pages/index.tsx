@@ -103,6 +103,7 @@ const ChatTitle = styled.p`
   color: #2b3a42;
 `;
 const ChaUser = styled.p`
+  margin-top: 10px;
   font-size: 14px;
   color: #2b3a42;
 `;

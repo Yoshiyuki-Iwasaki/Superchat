@@ -84,6 +84,7 @@ const Logo = styled.a`
 const RightArea = styled.div``;
 const Hover = styled.div`
   position: relative;
+  cursor: pointer;
 `;
 const List = styled.ul`
   position: absolute;
