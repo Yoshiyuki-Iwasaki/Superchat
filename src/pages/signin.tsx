@@ -19,7 +19,6 @@ const SignIn = () => {
 
   return (
     <>
-      <Header />
       <Main>
         <Inner>
           <button onClick={e => handleSignIn(e)}>ログイン</button>
