@@ -3,28 +3,13 @@ import styled from "styled-components";
 import { supabase } from "../../util/supabase";
 
 export type ChatFormType = {
-  chatData: any;
+  inputData: any;
+  setInputData: any;
+  message: any;
+  createPost: any;
 };
 
-const ChatForm: React.FC<ChatFormType> = ({ chatData }) => {
-  const user = supabase.auth.user();
-  const [inputData, setInputData] = useState({ message: "" });
-  const { message } = inputData;
-
-  const createPost = async e => {
-    if (!message) return;
-    e.preventDefault();
-    try {
-      const { error } = await supabase
-        .from("posts")
-        .insert([{ message, user_id: user.id, chat_id: chatData.id }])
-        .single();
-      if (error) throw new Error();
-    } catch (error) {
-      alert(error.message);
-    }
-    setInputData({ message: "" });
-  };
+const ChatForm: React.FC<ChatFormType> = ({inputData, setInputData, message, createPost}) => {
 
   const handleChange = e => {
     setInputData({ ...inputData, message: e.target.value });

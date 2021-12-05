@@ -12,6 +12,24 @@ export type ChatListType = {
 
 const ChatList: React.FC<ChatListType> = ({ chatData }) => {
   const [posts, setPosts] = useState([]);
+  const user = supabase.auth.user();
+  const [inputData, setInputData] = useState({ message: "" });
+  const { message } = inputData;
+
+  const createPost = async e => {
+    if (!message) return;
+    e.preventDefault();
+    try {
+      const { error } = await supabase
+        .from("posts")
+        .insert([{ message, user_id: user.id, chat_id: chatData.id }])
+        .single();
+      if (error) throw new Error();
+    } catch (error) {
+      alert(error.message);
+    }
+    setInputData({ message: "" });
+  };
 
   useEffect(() => {
     fetchPost();
@@ -42,7 +60,12 @@ const ChatList: React.FC<ChatListType> = ({ chatData }) => {
             </ListItem>
           ))}
       </List>
-      <ChatForm chatData={chatData} />
+      <ChatForm
+        inputData={inputData}
+        setInputData={setInputData}
+        message={message}
+        createPost={createPost}
+      />
     </>
   );
 };

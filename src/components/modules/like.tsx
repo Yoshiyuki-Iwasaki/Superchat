@@ -54,6 +54,8 @@ const Like: React.FC<LikeType> = ({ id }) => {
         .insert([{ post_id: id, user_id: user.id }])
         .single();
       if (error) throw new Error();
+      loadingLike();
+      countLike();
     } catch (error) {
       alert(error.message);
     }
@@ -67,6 +69,8 @@ const Like: React.FC<LikeType> = ({ id }) => {
         .delete()
         .match({ post_id: id, user_id: user.id });
       if (error) throw new Error();
+      loadingLike();
+      countLike();
     } catch (error) {
       alert(error.message);
     }
