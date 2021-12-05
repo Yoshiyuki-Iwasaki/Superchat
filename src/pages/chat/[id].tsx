@@ -4,55 +4,44 @@ import Layout from '../../components/modules/layout'
 import styled from "styled-components";
 import ChatForm from "../../components/chat/chatForm";
 import ChatList from "../../components/chat/chatList";
+import router from 'next/router'
 
 export type ChatDetailType = {
   chatData: any;
 };
 
-const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
+const ChatDetail: React.FC<ChatDetailType> = () => {
   const [posts, setPosts] = useState([]);
+  console.log('router', router);
 
-  useEffect(() => {
-    fetchPost();
-    console.log("chatData", chatData);
-  }, []);
+  // useEffect(() => {
+  //   fetchPost();
+  //   console.log("chatData", chatData);
+  // }, []);
 
-  const fetchPost = async () => {
-    try {
-      const { data, error } = await supabase
-        .from("posts")
-        .select()
-        .eq("chat_id", chatData.id);
-      setPosts(data);
-      console.log("data", data);
-      if (error) throw new Error();
-    } catch (error) {
-      alert(error.message);
-    }
-  };
+  // const fetchPost = async () => {
+  //   try {
+  //     const { data, error } = await supabase
+  //       .from("posts")
+  //       .select()
+  //       .eq("chat_id", chatData.id);
+  //     setPosts(data);
+  //     console.log("data", data);
+  //     if (error) throw new Error();
+  //   } catch (error) {
+  //     alert(error.message);
+  //   }
+  // };
   return (
     <Layout>
-      <Title>{chatData.title}</Title>
-      <ChatList posts={posts} />
-      <ChatForm chatData={chatData} />
+    {/* <Title>{chatData.title}</Title> */}
+    {/* <ChatList posts={posts} /> */}
+    {/* <ChatForm chatData={chatData} /> */}
     </Layout>
   );
 };
 
-export default ChatDetail
-
-
-export async function getServerSideProps(context) {
-  const { id } = context.query;
-  const chat = await supabase.from("chat").select();
-  const chatData = chat.data.find(chat => chat.id == id);
-  console.log('id', id);
-  console.log('chatData', chatData);
-
-  return {
-    props: { chatData },
-  };
-}
+export default ChatDetail;
 
 const Title = styled.h2`
   padding: 15px 0px;
