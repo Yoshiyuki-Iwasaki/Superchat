@@ -13,15 +13,18 @@ const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    const fetch = async () => {
-      const { data, error } = await supabase
-        .from("posts")
-        .select()
-        .eq("chat_id", chatData.id);
-      setPosts(data);
-    };
-    fetch();
+    fetchPost();
   }, []);
+  const fetchPost = async () => {
+    const { data, error } = await supabase
+      .from("posts")
+      .select()
+      .eq("chat_id", chatData.id);
+    setPosts(data);
+  };
+
+  console.log('chatData', chatData);
+  console.log("posts", posts);
 
   return (
     <Layout>
