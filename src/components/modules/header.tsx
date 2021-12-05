@@ -3,6 +3,7 @@ import { supabase } from "../../util/supabase";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import Link from "next/link";
+import Image from 'next/image'
 
 const Header = () => {
   const user = supabase.auth.user();
@@ -33,13 +34,14 @@ const Header = () => {
           </Link>
         </Title>
         <RightArea>
-          {userList[0] && (
-            <p>
-              {userList[0].fullname
-                ? userList[0].fullname
-                : '匿名'}
-            </p>
-          )}
+          <Avatar>
+            <AvatarImage>
+              <Image src="./avatar.png" width={100} height={100} />
+            </AvatarImage>
+            {userList[0] && (
+              <p>{userList[0].fullname ? userList[0].fullname : "noname"}</p>
+            )}
+          </Avatar>
           <Link href="/editProfile" as="/editProfile" passHref>
             <LinkText>プロフィール編集</LinkText>
           </Link>
@@ -70,6 +72,8 @@ const Logo = styled.a`
   color: #f3f3f3;
 `;
 const RightArea = styled.div``;
+const AvatarImage = styled.figure``;
+const Avatar = styled.div``;
 const LinkText = styled.a``;
 const Button = styled.button`
   padding: 5px 10px;
