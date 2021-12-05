@@ -22,9 +22,6 @@ const Like: React.FC<LikeType> = ({ id }) => {
         .from("likes")
         .select()
         .match({ post_id: id });
-      console.log("countLike data", data);
-      console.log("countLike data[0]", data[0]);
-      console.log("countLike data.length", data.length);
       setlikeCount(data.length);
       if (error) throw new Error();
     } catch (error) {
@@ -38,8 +35,6 @@ const Like: React.FC<LikeType> = ({ id }) => {
         .from("likes")
         .select()
         .match({ post_id: id, user_id: user.id });
-      console.log("loadingLike data", data);
-      console.log("loadingLike data[0]", data[0]);
       if (data[0]) { setDone(true); }
       else { setDone(false); }
       if (error) throw new Error();
@@ -60,13 +55,26 @@ const Like: React.FC<LikeType> = ({ id }) => {
       alert(error.message);
     }
   };
+
+  const clickRemoveLikeButton = async e => {
+    e.preventDefault();
+    try {
+      const { error } = await supabase
+        .from("likes")
+        .delete()
+        .match({ post_id: id, user_id: user.id });
+      if (error) throw new Error();
+    } catch (error) {
+      alert(error.message);
+    }
+  };
   return (
     <>
       <LikeArea>
         {!done ? (
           <Text onClick={e => clickLikeFunction(e)}>いいね</Text>
         ) : (
-          <Text>いいね済み</Text>
+          <Text onClick={e => clickRemoveLikeButton(e)}>いいね済み</Text>
         )}
         <Count>{likeCount}</Count>
       </LikeArea>
