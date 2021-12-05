@@ -108,6 +108,8 @@ const ChaUser = styled.p`
 `;
 const Input = styled.input`
   margin-top: 10px;
+  font-size: 14px;
+  color: #2b3a42;
 `;
 const List = styled.ul`
   margin-top: 10px;
