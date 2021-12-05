@@ -12,22 +12,8 @@ const ChatList: React.FC<ChatListType> = ({ chatData }) => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetchPost();
+    setPosts(chatData);
   }, []);
-
-  const fetchPost = async () => {
-    try {
-      const { data, error } = await supabase
-        .from("posts")
-        .select()
-        .eq("chat_id", chatData.id);
-      setPosts(data);
-      console.log("data", data);
-      if (error) throw new Error();
-    } catch (error) {
-      alert(error.message);
-    }
-  };
 
   console.log("chatData", chatData);
   console.log("posts", posts);
