@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import { supabase } from "../util/supabase";
 import styled from "styled-components";
-import Header from "../components/modules/header";
 
 const SignIn = () => {
 
-  const handleSignIn = async e => {
+  const handleGithubSignIn = async e => {
     e.preventDefault();
     try {
       const { user, session, error } = await supabase.auth.signIn({
@@ -21,7 +20,9 @@ const SignIn = () => {
     <>
       <Main>
         <Inner>
-          <button onClick={e => handleSignIn(e)}>ログイン</button>
+          <ButtonArea>
+            <Button onClick={e => handleGithubSignIn(e)}>Githubログイン</Button>
+          </ButtonArea>
         </Inner>
       </Main>
     </>
@@ -33,6 +34,17 @@ export default SignIn;
 const Main = styled.div``;
 const Inner = styled.div`
   margin: 0 auto;
+  position: relative;
   display: flex;
   max-width: 1000px;
+`;
+const ButtonArea = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+`;
+const Button = styled.button`
+  padding: 5px 10px;
+  background: #24292f;
 `;
