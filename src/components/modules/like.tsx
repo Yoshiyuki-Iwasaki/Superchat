@@ -3,18 +3,18 @@ import { supabase } from "../../util/supabase";
 import styled from "styled-components";
 
 export type LikeType = {
-  posts: any;
+  id: number;
 };
 
-const Like: React.FC<LikeType> = ({ posts }) => {
+const Like: React.FC<LikeType> = ({ id }) => {
   const user = supabase.auth.user();
-  console.log('posts', posts);
+  console.log("posts.id", id);
 
   const clickLikeFunction = async e => {
     e.preventDefault();
     const { data, error } = await supabase
       .from("likes")
-      .insert([{ post_id: posts.id, user_id: user.id }])
+      .insert([{ post_id: id, user_id: user.id }])
       .single();
     console.log('error', error);
     console.log("data", data);
