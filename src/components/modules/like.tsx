@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from "react";
 import { supabase } from "../../util/supabase";
 import styled from "styled-components";
 
@@ -8,6 +8,26 @@ export type LikeType = {
 
 const Like: React.FC<LikeType> = ({ id }) => {
   const user = supabase.auth.user();
+  const [content, setContent] = useState({});
+    const [done, setDone] = useState<boolean>(false);
+    const [likeCount, setlikeCount] = useState<number>(0);
+
+  useEffect(() => {
+    const fetch = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("like")
+          .select()
+          .match({ post_id: id, user_id: user.id });
+        console.log('data', data);
+        console.log("data[0]", data[0]);
+        if (error) throw new Error();
+      } catch (error) {
+        alert(error.message);
+      }
+    };
+    fetch();
+  }, []);
 
   const clickLikeFunction = async e => {
     e.preventDefault();
