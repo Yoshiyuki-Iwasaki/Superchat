@@ -8,15 +8,14 @@ export type LikeType = {
 
 const Like: React.FC<LikeType> = ({ id }) => {
   const user = supabase.auth.user();
-  const [content, setContent] = useState({});
-    const [done, setDone] = useState<boolean>(false);
-    const [likeCount, setlikeCount] = useState<number>(0);
+  const [done, setDone] = useState<boolean>(false);
+  const [likeCount, setlikeCount] = useState<number>(0);
 
   useEffect(() => {
     const fetch = async () => {
       try {
         const { data, error } = await supabase
-          .from("like")
+          .from("likes")
           .select()
           .match({ post_id: id, user_id: user.id });
         console.log('data', data);
