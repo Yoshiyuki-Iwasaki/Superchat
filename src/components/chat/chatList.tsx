@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from "styled-components";
 import { formatDate } from "../../util/date";
+import Like from '../modules/like';
 
 export type ChatListType = {
   posts: any;
@@ -14,6 +15,7 @@ const ChatList: React.FC<ChatListType> = ({ posts }) => {
           <ListItem key={index}>
             <Date>{formatDate(post.created_at)}</Date>
             <Message>{post.message}</Message>
+            <Like />
           </ListItem>
         ))}
     </List>
