@@ -33,7 +33,13 @@ const Header = () => {
           </Link>
         </Title>
         <RightArea>
-          {userList[0] && <p>{userList[0].fullname}</p>}
+          {userList[0] && (
+            <p>
+              {userList[0].fullname
+                ? userList[0].fullname
+                : '匿名'}
+            </p>
+          )}
           <Link href="/editProfile" as="/editProfile" passHref>
             <LinkText>プロフィール編集</LinkText>
           </Link>
