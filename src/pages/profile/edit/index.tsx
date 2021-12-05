@@ -61,7 +61,10 @@ const Title = styled.h2`
 const Form = styled.form`
   margin-top: 15px;
 `;
-const Input = styled.input``;
+const Input = styled.input`
+  font-size: 14px;
+  color: #2b3a42;
+`;
 const Button = styled.button`
   margin-top: 10px;
   padding: 5px 10px;
