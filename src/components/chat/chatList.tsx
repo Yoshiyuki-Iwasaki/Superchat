@@ -63,8 +63,8 @@ const ChatList: React.FC<ChatListType> = ({ chatData }) => {
               <RightArea>
                 <Date>{formatDate(post.created_at)}</Date>
                 <Message>{post.message}</Message>
-                <Like id={post.id} />
               </RightArea>
+              <Like id={post.id} />
             </ListItem>
           ))}
       </List>
@@ -86,7 +86,9 @@ const ListItem = styled.li`
   padding: 15px;
   display: flex;
 `;
-const RightArea = styled.div``;
+const RightArea = styled.div`
+  margin-left: 10px;
+`;
 const Date = styled.p`
   font-size: 12px;
   color: #2b3a42;
