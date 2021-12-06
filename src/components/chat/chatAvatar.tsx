@@ -32,12 +32,16 @@ const ChatAvatar: React.FC<ChatAvatarType> = ({ userId }) => {
   return (
     <Avatar>
       <Image src={`/avatar.png`} width={40} height={40} />
-      {userData[0] && <p>{userData[0].fullname}</p>}
+      {userData[0] && <Username>{userData[0].fullname}</Username>}
     </Avatar>
   );
 };
 
 export default ChatAvatar;
 
-const Avatar = styled.div`
+const Avatar = styled.div``;
+const Username = styled.p`
+  margin-top: 5px;
+  font-size: 13px;
+  color: #2b3a42;
 `;

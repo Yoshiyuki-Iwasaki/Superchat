@@ -115,7 +115,7 @@ const List = styled.ul`
   margin-top: 10px;
 `;
 const ListItem = styled.li`
-  margin-top: 5px;
+  margin-top: 10px;
   display: flex;
   align-items: center;
 `;
