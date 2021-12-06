@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { supabase } from "../../util/supabase";
 
 export type ChatFormType = {
   inputData: any;

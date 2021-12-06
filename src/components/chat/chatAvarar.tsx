@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Image from 'next/image'
 import { supabase } from "../../util/supabase";
+import styled from "styled-components";
 
 export type ChatAvararType = {
   userId: any;
@@ -29,11 +30,14 @@ const ChatAvarar: React.FC<ChatAvararType> = ({ userId }) => {
   console.log('userData', userData);
   console.log("userData[0]", userData[0]);
   return (
-    <>
+    <Avatar>
       <Image src={`/avatar.png`} width={40} height={40} />
       {userData[0] && <p>{userData[0].fullname}</p>}
-    </>
+    </Avatar>
   );
 };
 
 export default ChatAvarar;
+
+const Avatar = styled.div`
+`;

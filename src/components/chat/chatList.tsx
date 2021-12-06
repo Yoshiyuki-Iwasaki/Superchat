@@ -82,6 +82,7 @@ export default ChatList;
 const List = styled.ul``;
 const ListItem = styled.li`
   padding: 15px;
+  display: flex;
 `;
 const Date = styled.p`
   font-size: 12px;
