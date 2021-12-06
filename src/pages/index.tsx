@@ -30,7 +30,6 @@ const createChat = async e => {
     },
     []
   );
-
   const { data, error } = await supabase
     .from("chat")
     .insert([{ title, users: dataPushArray }])

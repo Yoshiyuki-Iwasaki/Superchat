@@ -36,9 +36,7 @@ const Header = () => {
         <RightArea>
           <Hover>
             <Avatar>
-              <AvatarImage>
-                <Image src={`/avatar.png`} width={40} height={40} />
-              </AvatarImage>
+              <Image src={`/avatar.png`} width={40} height={40} />
               {userList[0] && (
                 <UserName>
                   {userList[0].fullname ? userList[0].fullname : "noname"}
@@ -112,9 +110,6 @@ const Avatar = styled.div`
   align-items: center;
   flex-direction: row-reverse;
 `;
-const AvatarImage = styled.figure`
-  border-radius: 25px;
-`;
 const UserName = styled.p`
   margin-right: 15px;
   font-size: 14px;
@@ -130,7 +125,7 @@ const LinkText = styled.a`
   font-size: 13px;
 `;
 const Button = styled.button`
-  padding: 5px 10px;
+  padding: 10px;
   display: block;
   width: 100%;
   background: #f3f3f3;
