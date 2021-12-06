@@ -59,11 +59,13 @@ const ChatList: React.FC<ChatListType> = ({ chatData }) => {
         {posts &&
           posts.map((post: any, index: number) => (
             <ListItem key={index}>
-              <Avatar userId={post.user_id} />
-              <RightArea>
-                <Date>{formatDate(post.created_at)}</Date>
-                <Message>{post.message}</Message>
-              </RightArea>
+              <Inner>
+                <Avatar userId={post.user_id} />
+                <RightArea>
+                  <Date>{formatDate(post.created_at)}</Date>
+                  <Message>{post.message}</Message>
+                </RightArea>
+              </Inner>
               <Like id={post.id} />
             </ListItem>
           ))}
@@ -86,6 +88,7 @@ const ListItem = styled.li`
   padding: 15px;
   display: flex;
 `;
+const Inner = styled.div``;
 const RightArea = styled.div`
   margin-left: 10px;
 `;
