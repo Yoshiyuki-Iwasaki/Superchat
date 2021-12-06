@@ -86,9 +86,10 @@ export default ChatList;
 const List = styled.ul``;
 const ListItem = styled.li`
   padding: 15px;
+`;
+const Inner = styled.div`
   display: flex;
 `;
-const Inner = styled.div``;
 const RightArea = styled.div`
   margin-left: 10px;
 `;

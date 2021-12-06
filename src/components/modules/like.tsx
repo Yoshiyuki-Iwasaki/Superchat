@@ -92,7 +92,7 @@ const Like: React.FC<LikeType> = ({ id }) => {
 export default Like;
 
 const LikeArea = styled.div`
-  margin-top: 5px;
+  margin-top: 10px;
   display: flex;
 `;
 const Text = styled.button`
