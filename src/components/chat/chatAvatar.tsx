@@ -3,11 +3,11 @@ import Image from 'next/image'
 import { supabase } from "../../util/supabase";
 import styled from "styled-components";
 
-export type ChatAvararType = {
+export type ChatAvatarType = {
   userId: any;
 };
 
-const ChatAvarar: React.FC<ChatAvararType> = ({ userId }) => {
+const ChatAvatar: React.FC<ChatAvatarType> = ({ userId }) => {
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const ChatAvarar: React.FC<ChatAvararType> = ({ userId }) => {
   );
 };
 
-export default ChatAvarar;
+export default ChatAvatar;
 
 const Avatar = styled.div`
 `;

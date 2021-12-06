@@ -5,7 +5,7 @@ import Like from '../modules/like';
 import { supabase } from "../../util/supabase";
 import router from "next/router";
 import ChatForm from "./chatForm";
-import Avarar from "./chatAvarar";
+import Avatar from "./chatAvatar";
 
 export type ChatListType = {
   chatData: any;
@@ -59,10 +59,12 @@ const ChatList: React.FC<ChatListType> = ({ chatData }) => {
         {posts &&
           posts.map((post: any, index: number) => (
             <ListItem key={index}>
-              <Avarar userId={post.user_id} />
-              <Date>{formatDate(post.created_at)}</Date>
-              <Message>{post.message}</Message>
-              <Like id={post.id} />
+              <Avatar userId={post.user_id} />
+              <RightArea>
+                <Date>{formatDate(post.created_at)}</Date>
+                <Message>{post.message}</Message>
+                <Like id={post.id} />
+              </RightArea>
             </ListItem>
           ))}
       </List>
@@ -84,6 +86,7 @@ const ListItem = styled.li`
   padding: 15px;
   display: flex;
 `;
+const RightArea = styled.div``;
 const Date = styled.p`
   font-size: 12px;
   color: #2b3a42;
