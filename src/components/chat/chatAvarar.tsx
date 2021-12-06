@@ -31,7 +31,7 @@ const ChatAvarar: React.FC<ChatAvararType> = ({ userId }) => {
   return (
     <>
       <Image src={`/avatar.png`} width={40} height={40} />
-      {/* <p>{userData[0].fullname}</p> */}
+      {userData[0] && <p>{userData[0].fullname}</p>}
     </>
   );
 };
