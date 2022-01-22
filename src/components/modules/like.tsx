@@ -16,9 +16,6 @@ const Like: React.FC<LikeType> = ({ id }) => {
     loadingLike();
   }, [likeCount, done]);
 
-  console.log("likeCount", likeCount);
-  console.log("done", done);
-
   const countLike = async () => {
     try {
       const { data, error } = await supabase
