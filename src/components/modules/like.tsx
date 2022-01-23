@@ -6,10 +6,36 @@ export type LikeType = {
   id: number;
 };
 
+const LikeArea = styled.div`
+  margin-top: 10px;
+  display: flex;
+`;
+const LikeButton = styled.button<{ liked: boolean }>`
+  padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+  position: absolute;
+  background: ${({ liked }) => (liked ? "red" : "gray")};
+  bottom: 8px;
+  left: 70px;
+  border-radius: 0.4rem;
+  border: none;
+  cursor: pointer;
+  font-size: 15px;
+  color: white;
+
+  &:before {
+    position: absolute;
+    content: "♡";
+    left: 5px;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+`;
+
 const Like: React.FC<LikeType> = ({ id }) => {
   const user = supabase.auth.user();
   const [done, setDone] = useState<boolean>(false);
   const [likeCount, setlikeCount] = useState<number>(0);
+  const [liked, setLiked] = useState<boolean>(false);
 
   useEffect(() => {
     countLike();
@@ -59,6 +85,7 @@ const Like: React.FC<LikeType> = ({ id }) => {
     } catch (error) {
       alert(error.message);
     }
+    setLiked(!liked);
   };
 
   const clickRemoveLikeButton = async e => {
@@ -74,33 +101,23 @@ const Like: React.FC<LikeType> = ({ id }) => {
     } catch (error) {
       alert(error.message);
     }
+    setLiked(!liked);
   };
   return (
     <>
       <LikeArea>
         {!done ? (
-          <Text onClick={e => clickLikeFunction(e)}>いいね</Text>
+          <LikeButton liked={liked} onClick={e => clickLikeFunction(e)}>
+            {likeCount}
+          </LikeButton>
         ) : (
-          <Text onClick={e => clickRemoveLikeButton(e)}>いいね済み</Text>
+          <LikeButton liked={liked} onClick={e => clickRemoveLikeButton(e)}>
+            {likeCount}
+          </LikeButton>
         )}
-        <Count>{likeCount}</Count>
       </LikeArea>
     </>
   );
 };
 
 export default Like;
-
-const LikeArea = styled.div`
-  margin-top: 10px;
-  display: flex;
-`;
-const Text = styled.button`
-  font-size: 12px;
-  color: #2b3a42;
-`;
-const Count = styled.p`
-  margin-left: 5px;
-  font-size: 12px;
-  color: #2b3a42;
-`;
