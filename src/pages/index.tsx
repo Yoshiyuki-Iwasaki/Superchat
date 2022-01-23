@@ -12,24 +12,20 @@ const Title = styled.h2`
   padding: 15px 0;
   font-size: 18px;
   font-weight: 700;
-  color: #2b3a42;
 `;
 const Form = styled.form`
   margin-top: 15px;
 `;
 const ChatTitle = styled.p`
   font-size: 14px;
-  color: #2b3a42;
 `;
 const ChaUser = styled.p`
   margin-top: 10px;
   font-size: 14px;
-  color: #2b3a42;
 `;
 const Input = styled.input`
   margin-top: 10px;
   font-size: 14px;
-  color: #2b3a42;
 `;
 const List = styled.ul`
   margin-top: 10px;

@@ -13,7 +13,6 @@ const Form = styled.form`
 `;
 const Input = styled.input`
   font-size: 14px;
-  color: #2b3a42;
 `;
 const Button = styled.button`
   padding: 5px 10px;

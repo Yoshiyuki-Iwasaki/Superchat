@@ -35,12 +35,10 @@ const RightArea = styled.div`
 `;
 const Date = styled.p`
   font-size: 11px;
-  color: #2b3a42;
 `;
 const Message = styled.p`
   margin-top: 10px;
   font-size: 14px;
-  color: #2b3a42;
 `;
 
 const ChatList: React.FC<ChatListType> = ({ chatData }) => {

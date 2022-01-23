@@ -8,14 +8,12 @@ const Title = styled.h2`
   padding: 15px 0;
   font-size: 18px;
   font-weight: 700;
-  color: #2b3a42;
 `;
 const Form = styled.form`
   margin-top: 15px;
 `;
 const Input = styled.input`
   font-size: 14px;
-  color: #2b3a42;
 `;
 const Button = styled.button`
   margin-top: 10px;
