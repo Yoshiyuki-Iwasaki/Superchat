@@ -4,12 +4,10 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
-import useMyUserInfo from "../../hooks/useMyUser";
 
 const Header = () => {
   const user = supabase.auth.user();
   const [userList, setUserList] = useState([]);
-  const { MyUserInfoData, isLoading } = useMyUserInfo();
   const router = useRouter();
 
   useEffect(() => {
@@ -28,8 +26,6 @@ const Header = () => {
     router.push("./signin");
   };
 
-  if (isLoading) return <p>ロード中！！</p>;
-
   return (
     <HeaderLayout>
       <Inner>
@@ -47,7 +43,6 @@ const Header = () => {
                   {userList[0].fullname ? userList[0].fullname : "noname"}
                 </UserName>
               )}
-              {MyUserInfoData && console.log(MyUserInfoData)}
             </Avatar>
             <List>
               <ListItem>

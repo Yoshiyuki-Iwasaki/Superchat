@@ -2,28 +2,32 @@ import React, { useState, useEffect } from "react";
 import { supabase } from "../../util/supabase";
 import styled from "styled-components";
 import Link from "next/link";
+import router from "next/router";
+
+type Shape = "flex-start" | "flex-end";
 
 const Sidebar = () => {
-    const user = supabase.auth.user();
-    const [chatList, setChatList] = useState<any>([]);
+  const user = supabase.auth.user();
+  const [chatList, setChatList] = useState<any>([]);
+  const [listFlex, setListFlex] = useState<Shape>("flex-start");
 
-    useEffect(() => {
-      const fetch = async () => {
-        const { data, error }: any = await supabase
-          .from("chat")
-          .select("id, title, created_at")
-          .contains("users", [user.id]);
-        setChatList(data);
-      };
-      fetch();
-    }, []);
+  useEffect(() => {
+    const fetch = async () => {
+      const { data, error }: any = await supabase
+        .from("chat")
+        .select("id, title, created_at")
+        .contains("users", [user.id]);
+      setChatList(data);
+    };
+    fetch();
+  }, []);
   return (
     <SidebarArea>
       <Title>チャット一覧</Title>
       <List>
         {chatList &&
           chatList.map((chat: any, index: number) => (
-            <ListItem key={index}>
+            <ListItem data={chat.id} listFlex={listFlex} key={index}>
               <Link href={`/chat/${chat.id}`} as={`/chat/${chat.id}`} passHref>
                 <LinkText>{chat.title}</LinkText>
               </Link>
@@ -34,8 +38,7 @@ const Sidebar = () => {
   );
 };
 
-export default Sidebar
-
+export default Sidebar;
 
 const SidebarArea = styled.aside`
   padding: 0 10px;
@@ -50,7 +53,9 @@ const Title = styled.h2`
   color: #2b3a42;
 `;
 const List = styled.ul``;
-const ListItem = styled.li``;
+const ListItem = styled.li<{ listFlex: any; data: any }>`
+  justify-content: data;
+`;
 const LinkText = styled.a`
   padding: 10px 5px;
   display: block;
