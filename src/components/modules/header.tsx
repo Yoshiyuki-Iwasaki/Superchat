@@ -6,34 +6,27 @@ import Link from "next/link";
 import Image from "next/image";
 import useSWR, { SWRConfig } from "swr";
 
-const fetcher = args => fetch(args).then((res: any) => res.json());
-
-const useMyUserInfo = () => {
-  // useSWR(アクセス先,関数,オプション)
-  const { data, error } = useSWR("/api/myuserinfo", fetcher);
-
-  return {
-    MyUserInfoData: data,
-    isLoading: !error && !data,
-    isError: error,
-  };
-};
-
 const Header = () => {
-  const { MyUserInfoData, isLoading } = useMyUserInfo();
+  const user = supabase.auth.user();
+  const [userList, setUserList] = useState([]);
   const router = useRouter();
 
-  const { data, error } = useSWR("/api/hello", fetcher);
-
-  console.log("data", data);
-  MyUserInfoData && console.log("MyUserInfoData", MyUserInfoData);
+  useEffect(() => {
+    const fetch = async () => {
+      const { data, error }: any = await supabase
+        .from("users")
+        .select()
+        .eq("id", [user.id]);
+      setUserList(data);
+    };
+    fetch();
+  }, []);
 
   const signOut = () => {
     supabase.auth.signOut();
     router.push("./signin");
   };
 
-  if (isLoading) return <p>ロード中です</p>;
   return (
     <HeaderLayout>
       <Inner>
@@ -46,13 +39,11 @@ const Header = () => {
           <Hover>
             <Avatar>
               <Image src={`/avatar.png`} width={40} height={40} />
-              {
+              {userList[0] && (
                 <UserName>
-                  {MyUserInfoData && MyUserInfoData.fullname
-                    ? MyUserInfoData.fullname
-                    : "noname"}
+                  {userList[0].fullname ? userList[0].fullname : "noname"}
                 </UserName>
-              }
+              )}
             </Avatar>
             <List>
               <ListItem>
