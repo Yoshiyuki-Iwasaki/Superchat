@@ -25,15 +25,9 @@ const Sidebar = () => {
         {chatList &&
           chatList.map((chat: any, index: number) => (
             <ListItem chat_id={chat.id} key={index}>
-              <Inner>
-                <Link
-                  href={`/chat/${chat.id}`}
-                  as={`/chat/${chat.id}`}
-                  passHref
-                >
-                  <LinkText>{chat.title}</LinkText>
-                </Link>
-              </Inner>
+              <Link href={`/chat/${chat.id}`} as={`/chat/${chat.id}`} passHref>
+                <LinkText>{chat.title}</LinkText>
+              </Link>
             </ListItem>
           ))}
       </List>
@@ -56,18 +50,13 @@ const Title = styled.h2`
   color: #2b3a42;
 `;
 const List = styled.ul``;
-const ListItem = styled.li<{ listFlex: any }>`
-  justify-content: ${props =>
-    props.chat_id == router.query.id ? "just" : "blue"};
-`;
-const Inner = styled.div<{ listFlex: any }>`
-  justify-content: ${props =>
-    props.chat_id == router.query.id ? "just" : "blue"};
-`;
+const ListItem = styled.li``;
 const LinkText = styled.a`
   padding: 10px 5px;
   display: block;
   font-size: 14px;
   font-weight: 400;
-  color: #2b3a42;
+  color: ${props => (props.chat_id == router.query.id ? "#fff" : "#2b3a42")};
+  background: ${props =>
+    props.chat_id == router.query.id ? "#2b3a42" : "#fff"};
 `;
