@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
+import useDarkMode from "../../hooks/useDarkMode";
 
 const HeaderLayout = styled.header`
   background: #2b3a42;
@@ -76,10 +77,15 @@ const Button = styled.button`
   font-size: 13px;
 `;
 
+const DarkmodeButton = styled.button`
+  font-size: 20px;
+`;
+
 const Header = () => {
   const user = supabase.auth.user();
   const [userList, setUserList] = useState([]);
   const router = useRouter();
+  const [theme, setTheme] = useDarkMode();
 
   useEffect(() => {
     const fetch = async () => {
@@ -106,6 +112,9 @@ const Header = () => {
           </Link>
         </Title>
         <RightArea>
+          <DarkmodeButton onClick={setTheme}>
+            {theme.type === "light" ? "🌚" : "🌝"}
+          </DarkmodeButton>
           <Hover>
             <Avatar>
               <Image src={`/avatar.png`} width={40} height={40} />
