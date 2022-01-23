@@ -24,9 +24,9 @@ const Sidebar = () => {
       <List>
         {chatList &&
           chatList.map((chat: any, index: number) => (
-            <ListItem chat_id={chat.id} key={index}>
+            <ListItem key={index}>
               <Link href={`/chat/${chat.id}`} as={`/chat/${chat.id}`} passHref>
-                <LinkText>{chat.title}</LinkText>
+                <LinkText chat_id={chat.id}>{chat.title}</LinkText>
               </Link>
             </ListItem>
           ))}
