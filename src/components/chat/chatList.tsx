@@ -50,6 +50,8 @@ const ChatList: React.FC<ChatListType> = ({ chatData }) => {
     }
   };
 
+  console.log("user.id", user.id);
+
   return (
     <>
       <List>
@@ -57,6 +59,7 @@ const ChatList: React.FC<ChatListType> = ({ chatData }) => {
           posts.map((post: any, index: number) => (
             <ListItem key={index}>
               <Inner user_id={post.user_id}>
+                {post.user_id}
                 <ListHeader>
                   <Avatar userId={post.user_id} />
                   <RightArea>
@@ -86,10 +89,10 @@ const ListItem = styled.li`
   padding: 15px;
   display: flex;
   justify-content: ${props =>
-    props.user_id == user.id ? "flex-start" : "flex-end"};
+    props.user_id == user.id ? "flex-end" : "flex-start"};
 `;
 const Inner = styled.div`
-  width: 400px;
+  width: 300px;
 `;
 const ListHeader = styled.div`
   display: flex;
