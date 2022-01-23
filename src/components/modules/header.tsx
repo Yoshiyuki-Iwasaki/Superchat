@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
-import { useMyUserInfo } from "../../hooks/useMyUserInfo";
+import useMyUserInfo from "../../hooks/useMyUserInfo";
 
 const Header = () => {
   const { MyUserInfoData, isLoading } = useMyUserInfo();
@@ -17,7 +17,7 @@ const Header = () => {
     router.push("./signin");
   };
 
-  if (isLoading) return <p>ロード中！！</p>;
+  if (isLoading) return <p>ロード中です</p>;
   return (
     <HeaderLayout>
       <Inner>
