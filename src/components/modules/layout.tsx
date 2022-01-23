@@ -2,6 +2,8 @@ import styled from "styled-components";
 import React from "react";
 import Header from "./header";
 import Sidebar from "./sidebar";
+import { RecoilRoot } from "recoil";
+import { ThemeProvider } from "../style";
 
 export type LayoutType = {
   children: any;
@@ -26,13 +28,17 @@ const Content = styled.div`
 const Layout: React.FC<LayoutType> = ({ children }) => {
   return (
     <>
-      <Header />
-      <Main>
-        <Inner>
-          <Sidebar />
-          <Content>{children}</Content>
-        </Inner>
-      </Main>
+      <RecoilRoot>
+        <ThemeProvider>
+          <Header />
+          <Main>
+            <Inner>
+              <Sidebar />
+              <Content>{children}</Content>
+            </Inner>
+          </Main>
+        </ThemeProvider>
+      </RecoilRoot>
     </>
   );
 };
