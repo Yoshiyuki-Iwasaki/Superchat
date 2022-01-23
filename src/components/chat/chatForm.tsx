@@ -8,8 +8,26 @@ export type ChatFormType = {
   createPost: any;
 };
 
-const ChatForm: React.FC<ChatFormType> = ({inputData, setInputData, message, createPost}) => {
+const Form = styled.form`
+  margin-top: 20px;
+`;
+const Input = styled.input`
+  font-size: 14px;
+  color: #2b3a42;
+`;
+const Button = styled.button`
+  padding: 5px 10px;
+  background: #2b3a42;
+  font-size: 14px;
+  color: #f3f3f3;
+`;
 
+const ChatForm: React.FC<ChatFormType> = ({
+  inputData,
+  setInputData,
+  message,
+  createPost,
+}) => {
   const handleChange = e => {
     setInputData({ ...inputData, message: e.target.value });
   };
@@ -26,17 +44,3 @@ const ChatForm: React.FC<ChatFormType> = ({inputData, setInputData, message, cre
 };
 
 export default ChatForm;
-
-const Form = styled.form`
-  margin-top: 20px;
-`;
-const Input = styled.input`
-  font-size: 14px;
-  color: #2b3a42;
-`;
-const Button = styled.button`
-  padding: 5px 10px;
-  background: #2b3a42;
-  font-size: 14px;
-  color: #f3f3f3;
-`;

@@ -7,6 +7,13 @@ export type ChatAvatarType = {
   userId: any;
 };
 
+const Avatar = styled.div``;
+const Username = styled.p`
+  font-size: 12px;
+  color: #2b3a42;
+  font-weight: 700;
+`;
+
 const ChatAvatar: React.FC<ChatAvatarType> = ({ userId }) => {
   const [userData, setUserData] = useState([]);
 
@@ -35,10 +42,3 @@ const ChatAvatar: React.FC<ChatAvatarType> = ({ userId }) => {
 };
 
 export default ChatAvatar;
-
-const Avatar = styled.div``;
-const Username = styled.p`
-  font-size: 12px;
-  color: #2b3a42;
-  font-weight: 700;
-`;

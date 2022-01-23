@@ -4,6 +4,30 @@ import styled from "styled-components";
 import Link from "next/link";
 import router from "next/router";
 
+const SidebarArea = styled.aside`
+  padding: 0 10px;
+  width: calc(100% / 5);
+  border-right: 2px solid #2b3a42;
+  box-sizing: border-box;
+`;
+const Title = styled.h2`
+  padding: 15px 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #2b3a42;
+`;
+const List = styled.ul``;
+const ListItem = styled.li``;
+const LinkText = styled.a`
+  padding: 10px 5px;
+  display: block;
+  font-size: 14px;
+  font-weight: 400;
+  color: ${props => (props.chat_id == router.query.id ? "#fff" : "#2b3a42")};
+  background: ${props =>
+    props.chat_id == router.query.id ? "#2b3a42" : "#fff"};
+`;
+
 const Sidebar = () => {
   const user = supabase.auth.user();
   const [chatList, setChatList] = useState<any>([]);
@@ -36,27 +60,3 @@ const Sidebar = () => {
 };
 
 export default Sidebar;
-
-const SidebarArea = styled.aside`
-  padding: 0 10px;
-  width: calc(100% / 5);
-  border-right: 2px solid #2b3a42;
-  box-sizing: border-box;
-`;
-const Title = styled.h2`
-  padding: 15px 0;
-  font-size: 18px;
-  font-weight: 700;
-  color: #2b3a42;
-`;
-const List = styled.ul``;
-const ListItem = styled.li``;
-const LinkText = styled.a`
-  padding: 10px 5px;
-  display: block;
-  font-size: 14px;
-  font-weight: 400;
-  color: ${props => (props.chat_id == router.query.id ? "#fff" : "#2b3a42")};
-  background: ${props =>
-    props.chat_id == router.query.id ? "#2b3a42" : "#fff"};
-`;

@@ -7,22 +7,6 @@ export type LayoutType = {
   children: any;
 };
 
-const Layout: React.FC<LayoutType> = ({ children }) => {
-  return (
-    <>
-      <Header />
-      <Main>
-        <Inner>
-          <Sidebar />
-          <Content>{children}</Content>
-        </Inner>
-      </Main>
-    </>
-  );
-};
-
-export default Layout;
-
 const Main = styled.div`
   height: calc(100vh - 60px);
 `;
@@ -38,3 +22,19 @@ const Content = styled.div`
   width: calc(100% - (100% / 5));
   box-sizing: border-box;
 `;
+
+const Layout: React.FC<LayoutType> = ({ children }) => {
+  return (
+    <>
+      <Header />
+      <Main>
+        <Inner>
+          <Sidebar />
+          <Content>{children}</Content>
+        </Inner>
+      </Main>
+    </>
+  );
+};
+
+export default Layout;

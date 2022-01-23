@@ -12,6 +12,32 @@ export type ChatListType = {
 };
 const user = supabase.auth.user();
 
+const List = styled.ul``;
+const ListItem = styled.li`
+  padding: 15px;
+  display: flex;
+  justify-content: ${props =>
+    props.user_id == user.id ? "flex-end" : "flex-start"};
+`;
+const Inner = styled.div`
+  width: 300px;
+`;
+const ListHeader = styled.div`
+  display: flex;
+`;
+const RightArea = styled.div`
+  margin-left: 10px;
+`;
+const Date = styled.p`
+  font-size: 11px;
+  color: #2b3a42;
+`;
+const Message = styled.p`
+  margin-top: 10px;
+  font-size: 14px;
+  color: #2b3a42;
+`;
+
 const ChatList: React.FC<ChatListType> = ({ chatData }) => {
   const [posts, setPosts] = useState([]);
   const [inputData, setInputData] = useState({ message: "" });
@@ -82,29 +108,3 @@ const ChatList: React.FC<ChatListType> = ({ chatData }) => {
 };
 
 export default ChatList;
-
-const List = styled.ul``;
-const ListItem = styled.li`
-  padding: 15px;
-  display: flex;
-  justify-content: ${props =>
-    props.user_id == user.id ? "flex-end" : "flex-start"};
-`;
-const Inner = styled.div`
-  width: 300px;
-`;
-const ListHeader = styled.div`
-  display: flex;
-`;
-const RightArea = styled.div`
-  margin-left: 10px;
-`;
-const Date = styled.p`
-  font-size: 11px;
-  color: #2b3a42;
-`;
-const Message = styled.p`
-  margin-top: 10px;
-  font-size: 14px;
-  color: #2b3a42;
-`;

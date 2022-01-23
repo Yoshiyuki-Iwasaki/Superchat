@@ -5,64 +5,6 @@ import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
 
-const Header = () => {
-  const user = supabase.auth.user();
-  const [userList, setUserList] = useState([]);
-  const router = useRouter();
-
-  useEffect(() => {
-    const fetch = async () => {
-      const { data, error }: any = await supabase
-        .from("users")
-        .select()
-        .eq("id", [user.id]);
-      setUserList(data);
-    };
-    fetch();
-  }, []);
-
-  const signOut = () => {
-    supabase.auth.signOut();
-    router.push("./signin");
-  };
-
-  return (
-    <HeaderLayout>
-      <Inner>
-        <Title>
-          <Link href="/" as="/" passHref>
-            <Logo>Superchat</Logo>
-          </Link>
-        </Title>
-        <RightArea>
-          <Hover>
-            <Avatar>
-              <Image src={`/avatar.png`} width={40} height={40} />
-              {userList[0] && (
-                <UserName>
-                  {userList[0].fullname ? userList[0].fullname : "noname"}
-                </UserName>
-              )}
-            </Avatar>
-            <List>
-              <ListItem>
-                <Link href="/profile/edit" as="/profile/edit" passHref>
-                  <LinkText>プロフィール編集</LinkText>
-                </Link>
-              </ListItem>
-              <ListItem>
-                <Button onClick={signOut}>ログアウト</Button>
-              </ListItem>
-            </List>
-          </Hover>
-        </RightArea>
-      </Inner>
-    </HeaderLayout>
-  );
-};
-
-export default Header;
-
 const HeaderLayout = styled.header`
   background: #2b3a42;
 `;
@@ -133,3 +75,61 @@ const Button = styled.button`
   cursor: pointer;
   font-size: 13px;
 `;
+
+const Header = () => {
+  const user = supabase.auth.user();
+  const [userList, setUserList] = useState([]);
+  const router = useRouter();
+
+  useEffect(() => {
+    const fetch = async () => {
+      const { data, error }: any = await supabase
+        .from("users")
+        .select()
+        .eq("id", [user.id]);
+      setUserList(data);
+    };
+    fetch();
+  }, []);
+
+  const signOut = () => {
+    supabase.auth.signOut();
+    router.push("./signin");
+  };
+
+  return (
+    <HeaderLayout>
+      <Inner>
+        <Title>
+          <Link href="/" as="/" passHref>
+            <Logo>Superchat</Logo>
+          </Link>
+        </Title>
+        <RightArea>
+          <Hover>
+            <Avatar>
+              <Image src={`/avatar.png`} width={40} height={40} />
+              {userList[0] && (
+                <UserName>
+                  {userList[0].fullname ? userList[0].fullname : "noname"}
+                </UserName>
+              )}
+            </Avatar>
+            <List>
+              <ListItem>
+                <Link href="/profile/edit" as="/profile/edit" passHref>
+                  <LinkText>プロフィール編集</LinkText>
+                </Link>
+              </ListItem>
+              <ListItem>
+                <Button onClick={signOut}>ログアウト</Button>
+              </ListItem>
+            </List>
+          </Hover>
+        </RightArea>
+      </Inner>
+    </HeaderLayout>
+  );
+};
+
+export default Header;
