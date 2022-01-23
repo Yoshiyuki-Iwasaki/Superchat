@@ -4,12 +4,9 @@ import styled from "styled-components";
 import Link from "next/link";
 import router from "next/router";
 
-type Shape = "flex-start" | "flex-end";
-
 const Sidebar = () => {
   const user = supabase.auth.user();
   const [chatList, setChatList] = useState<any>([]);
-  const [listFlex, setListFlex] = useState<Shape>("flex-start");
 
   useEffect(() => {
     const fetch = async () => {
@@ -27,10 +24,16 @@ const Sidebar = () => {
       <List>
         {chatList &&
           chatList.map((chat: any, index: number) => (
-            <ListItem data={chat.id} listFlex={listFlex} key={index}>
-              <Link href={`/chat/${chat.id}`} as={`/chat/${chat.id}`} passHref>
-                <LinkText>{chat.title}</LinkText>
-              </Link>
+            <ListItem chat_id={chat.id} key={index}>
+              <Inner>
+                <Link
+                  href={`/chat/${chat.id}`}
+                  as={`/chat/${chat.id}`}
+                  passHref
+                >
+                  <LinkText>{chat.title}</LinkText>
+                </Link>
+              </Inner>
             </ListItem>
           ))}
       </List>
@@ -53,8 +56,13 @@ const Title = styled.h2`
   color: #2b3a42;
 `;
 const List = styled.ul``;
-const ListItem = styled.li<{ listFlex: any; data: any }>`
-  justify-content: data;
+const ListItem = styled.li<{ listFlex: any }>`
+  justify-content: ${props =>
+    props.chat_id == router.query.id ? "just" : "blue"};
+`;
+const Inner = styled.div<{ listFlex: any }>`
+  justify-content: ${props =>
+    props.chat_id == router.query.id ? "just" : "blue"};
 `;
 const LinkText = styled.a`
   padding: 10px 5px;
