@@ -5,10 +5,16 @@ import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
 import useMyUserInfo from "../../hooks/useMyUserInfo";
+import useSWR, { SWRConfig } from "swr";
+const fetcher = args => fetch(args).then((res: any) => res.json());
 
 const Header = () => {
   const { MyUserInfoData, isLoading } = useMyUserInfo();
   const router = useRouter();
+
+  const { data, error } = useSWR("/api/hello", fetcher);
+
+  console.log("data", data);
 
   console.log("MyUserInfoData", MyUserInfoData);
 
