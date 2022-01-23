@@ -84,11 +84,12 @@ export default ChatList;
 const List = styled.ul``;
 const ListItem = styled.li`
   padding: 15px;
-`;
-const Inner = styled.div`
   display: flex;
   justify-content: ${props =>
-    props.user_id == user.id ? "flex-first" : "flex-end"};
+    props.user_id == user.id ? "flex-start" : "flex-end"};
+`;
+const Inner = styled.div`
+  width: 400px;
 `;
 const ListHeader = styled.div`
   display: flex;
