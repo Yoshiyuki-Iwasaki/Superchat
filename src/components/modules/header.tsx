@@ -10,6 +10,8 @@ const Header = () => {
   const { MyUserInfoData, isLoading } = useMyUserInfo();
   const router = useRouter();
 
+  console.log("MyUserInfoData", MyUserInfoData);
+
   const signOut = () => {
     supabase.auth.signOut();
     router.push("./signin");
@@ -30,7 +32,7 @@ const Header = () => {
               <Image src={`/avatar.png`} width={40} height={40} />
               {
                 <UserName>
-                  {MyUserInfoData.fullname ? MyUserInfoData.fullname : "noname"}
+                  {/* {MyUserInfoData.fullname ? MyUserInfoData.fullname : "noname"} */}
                 </UserName>
               }
             </Avatar>
