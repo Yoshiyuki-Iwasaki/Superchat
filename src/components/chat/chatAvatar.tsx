@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Image from 'next/image'
+import Image from "next/image";
 import { supabase } from "../../util/supabase";
 import styled from "styled-components";
 
@@ -26,12 +26,9 @@ const ChatAvatar: React.FC<ChatAvatarType> = ({ userId }) => {
       alert(error.message);
     }
   };
-  console.log('userId', userId);
-  console.log('userData', userData);
-  console.log("userData[0]", userData[0]);
   return (
     <Avatar>
-      <Image src={`/avatar.png`} width={40} height={40} />
+      {/* <Image src={`/avatar.png`} width={40} height={40} /> */}
       {userData[0] && <Username>{userData[0].fullname}</Username>}
     </Avatar>
   );
@@ -41,7 +38,7 @@ export default ChatAvatar;
 
 const Avatar = styled.div``;
 const Username = styled.p`
-  margin-top: 5px;
   font-size: 13px;
   color: #2b3a42;
+  font-weight: 700;
 `;

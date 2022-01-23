@@ -35,8 +35,11 @@ const Like: React.FC<LikeType> = ({ id }) => {
         .from("likes")
         .select()
         .match({ post_id: id, user_id: user.id });
-      if (data[0]) { setDone(true); }
-      else { setDone(false); }
+      if (data[0]) {
+        setDone(true);
+      } else {
+        setDone(false);
+      }
       if (error) throw new Error();
     } catch (error) {
       alert(error.message);

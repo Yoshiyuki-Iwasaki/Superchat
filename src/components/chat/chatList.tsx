@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { formatDate } from "../../util/date";
-import Like from '../modules/like';
+import Like from "../modules/like";
 import { supabase } from "../../util/supabase";
 import router from "next/router";
 import ChatForm from "./chatForm";
@@ -82,7 +82,6 @@ const ChatList: React.FC<ChatListType> = ({ chatData }) => {
 
 export default ChatList;
 
-
 const List = styled.ul``;
 const ListItem = styled.li`
   padding: 15px;
@@ -94,7 +93,7 @@ const RightArea = styled.div`
   margin-left: 10px;
 `;
 const Date = styled.p`
-  font-size: 12px;
+  font-size: 11px;
   color: #2b3a42;
 `;
 const Message = styled.p`
