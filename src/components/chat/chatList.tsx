@@ -60,6 +60,7 @@ const ChatList: React.FC<ChatListType> = ({ chatData }) => {
             <ListItem key={index}>
               <Inner user_id={post.user_id}>
                 {post.user_id}
+                {user.id}
                 <ListHeader>
                   <Avatar userId={post.user_id} />
                   <RightArea>
