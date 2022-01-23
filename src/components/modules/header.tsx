@@ -3,28 +3,19 @@ import { supabase } from "../../util/supabase";
 import { useRouter } from "next/router";
 import styled from "styled-components";
 import Link from "next/link";
-import Image from 'next/image'
+import Image from "next/image";
+import { useMyUserInfo } from "../../hooks/useMyUserInfo";
 
 const Header = () => {
-  const user = supabase.auth.user();
-  const [userList, setUserList] = useState([]);
+  const { MyUserInfoData, isLoading } = useMyUserInfo();
   const router = useRouter();
-
-  useEffect(() => {
-    const fetch = async () => {
-      const { data, error }: any = await supabase
-        .from("users")
-        .select()
-        .eq("id", [user.id]);
-      setUserList(data);
-    };
-    fetch();
-  }, []);
 
   const signOut = () => {
     supabase.auth.signOut();
     router.push("./signin");
   };
+
+  if (isLoading) return <p>ロード中！！</p>;
   return (
     <HeaderLayout>
       <Inner>
@@ -37,11 +28,11 @@ const Header = () => {
           <Hover>
             <Avatar>
               <Image src={`/avatar.png`} width={40} height={40} />
-              {userList[0] && (
+              {
                 <UserName>
-                  {userList[0].fullname ? userList[0].fullname : "noname"}
+                  {MyUserInfoData.fullname ? MyUserInfoData.fullname : "noname"}
                 </UserName>
-              )}
+              }
             </Avatar>
             <List>
               <ListItem>
