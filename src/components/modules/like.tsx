@@ -5,17 +5,12 @@ import styled from "styled-components";
 export type LikeType = {
   id: number;
 };
-
-const LikeArea = styled.div`
-  margin-top: 10px;
-  display: flex;
-`;
 const LikeButton = styled.button<{ liked: boolean }>`
   padding: 0.5rem 0.5rem 0.5rem 1.5rem;
   position: absolute;
   background: ${({ liked }) => (liked ? "red" : "gray")};
-  bottom: 8px;
-  left: 70px;
+  bottom: 10px;
+  left: 0;
   border-radius: 0.4rem;
   border: none;
   cursor: pointer;
@@ -105,7 +100,7 @@ const Like: React.FC<LikeType> = ({ id }) => {
   };
   return (
     <>
-      <LikeArea>
+      <>
         {!done ? (
           <LikeButton liked={liked} onClick={e => clickLikeFunction(e)}>
             {likeCount}
@@ -115,7 +110,7 @@ const Like: React.FC<LikeType> = ({ id }) => {
             {likeCount}
           </LikeButton>
         )}
-      </LikeArea>
+      </>
     </>
   );
 };

@@ -14,10 +14,15 @@ const user = supabase.auth.user();
 
 const List = styled.ul``;
 const ListItem = styled.li`
+  margin-top: 20px;
   padding: 15px;
   display: flex;
   justify-content: ${props =>
     props.user_id == user.id ? "flex-end" : "flex-start"};
+
+  &:first-child {
+    margin-top: 0;
+  }
 `;
 const Inner = styled.div`
   width: 300px;
@@ -75,8 +80,6 @@ const ChatList: React.FC<ChatListType> = ({ chatData }) => {
       alert(error.message);
     }
   };
-
-  console.log("user.id", user.id);
 
   return (
     <>
