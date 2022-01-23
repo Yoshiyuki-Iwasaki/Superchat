@@ -26,7 +26,7 @@ const Header = () => {
   const { data, error } = useSWR("/api/hello", fetcher);
 
   console.log("data", data);
-  console.log("MyUserInfoData", MyUserInfoData);
+  MyUserInfoData && console.log("MyUserInfoData", MyUserInfoData);
 
   const signOut = () => {
     supabase.auth.signOut();
@@ -48,7 +48,9 @@ const Header = () => {
               <Image src={`/avatar.png`} width={40} height={40} />
               {
                 <UserName>
-                  {/* {MyUserInfoData.fullname ? MyUserInfoData.fullname : "noname"} */}
+                  {MyUserInfoData && MyUserInfoData.fullname
+                    ? MyUserInfoData.fullname
+                    : "noname"}
                 </UserName>
               }
             </Avatar>
