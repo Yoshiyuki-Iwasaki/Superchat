@@ -24,7 +24,10 @@ const Logo = styled.a`
   font-weight: 700;
   color: #f3f3f3;
 `;
-const RightArea = styled.div``;
+const RightArea = styled.div`
+  display: flex;
+  align-items: center;
+`;
 const Hover = styled.div`
   position: relative;
   cursor: pointer;
@@ -78,6 +81,7 @@ const Button = styled.button`
 `;
 
 const DarkmodeButton = styled.button`
+  margin-right: 20px;
   font-size: 20px;
 `;
 
