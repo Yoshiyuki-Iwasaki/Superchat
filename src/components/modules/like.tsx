@@ -6,7 +6,7 @@ export type LikeType = {
   id: number;
 };
 const LikeButton = styled.button<{ liked: boolean }>`
-  padding: 0.5rem 0.5rem 0.5rem 1.5rem;
+  padding: 0.5rem 0.5rem 0.5rem 2.3rem;
   position: absolute;
   background: ${({ liked }) => (liked ? "red" : "gray")};
   bottom: -30px;
@@ -14,7 +14,7 @@ const LikeButton = styled.button<{ liked: boolean }>`
   border-radius: 0.4rem;
   border: none;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 14px;
   color: white;
 
   &:before {
