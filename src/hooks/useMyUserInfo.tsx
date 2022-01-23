@@ -5,6 +5,8 @@ const fetcher = args => fetch(args).then((res: any) => res.json());
 const useMyUserInfo = () => {
   // useSWR(アクセス先,関数,オプション)
   const { data, error } = useSWR("/api/getMyUserInfo", fetcher);
+
+  console.log("getMyUserInfo", data);
   return {
     MyUserInfoData: data,
     isLoading: !error && !data,

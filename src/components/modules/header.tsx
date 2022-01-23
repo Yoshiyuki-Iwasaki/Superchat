@@ -16,8 +16,6 @@ const Header = () => {
 
   console.log("data", data);
 
-  console.log("MyUserInfoData", MyUserInfoData);
-
   const signOut = () => {
     supabase.auth.signOut();
     router.push("./signin");
