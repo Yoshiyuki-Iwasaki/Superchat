@@ -10,10 +10,10 @@ import Avatar from "./chatAvatar";
 export type ChatListType = {
   chatData: any;
 };
+const user = supabase.auth.user();
 
 const ChatList: React.FC<ChatListType> = ({ chatData }) => {
   const [posts, setPosts] = useState([]);
-  const user = supabase.auth.user();
   const [inputData, setInputData] = useState({ message: "" });
   const { message } = inputData;
 
@@ -56,14 +56,16 @@ const ChatList: React.FC<ChatListType> = ({ chatData }) => {
         {posts &&
           posts.map((post: any, index: number) => (
             <ListItem key={index}>
-              <Inner>
-                <Avatar userId={post.user_id} />
-                <RightArea>
-                  <Date>{formatDate(post.created_at)}</Date>
-                  <Message>{post.message}</Message>
-                </RightArea>
+              <Inner user_id={post.user_id}>
+                <ListHeader>
+                  <Avatar userId={post.user_id} />
+                  <RightArea>
+                    <Date>{formatDate(post.created_at)}</Date>
+                    <Message>{post.message}</Message>
+                  </RightArea>
+                </ListHeader>
+                <Like id={post.id} />
               </Inner>
-              <Like id={post.id} />
             </ListItem>
           ))}
       </List>
@@ -84,6 +86,11 @@ const ListItem = styled.li`
   padding: 15px;
 `;
 const Inner = styled.div`
+  display: flex;
+  justify-content: ${props =>
+    props.user_id == user.id ? "flex-first" : "flex-end"};
+`;
+const ListHeader = styled.div`
   display: flex;
 `;
 const RightArea = styled.div`
