@@ -38,7 +38,7 @@ export default ChatAvatar;
 
 const Avatar = styled.div``;
 const Username = styled.p`
-  font-size: 13px;
+  font-size: 12px;
   color: #2b3a42;
   font-weight: 700;
 `;
