@@ -4,9 +4,9 @@ const fetcher = args => fetch(args).then((res: any) => res.json());
 // useAirportという関数をつくる
 const useMyUserInfo = () => {
   // useSWR(アクセス先,関数,オプション)
-  const { data, error } = useSWR("/api/myuserinfo", fetcher);
+  const { data, error } = useSWR("/api/myuser", fetcher);
+  console.log(data);
 
-  console.log("getMyUserInfo", data);
   return {
     MyUserInfoData: data,
     isLoading: !error && !data,

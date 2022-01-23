@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import styled from "styled-components";
 import Link from "next/link";
 import Image from "next/image";
-import useMyUserInfo from "../../hooks/useMyUserInfo";
+import useMyUserInfo from "../../hooks/useMyUser";
 
 const Header = () => {
   const user = supabase.auth.user();
