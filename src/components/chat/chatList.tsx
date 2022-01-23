@@ -57,10 +57,8 @@ const ChatList: React.FC<ChatListType> = ({ chatData }) => {
       <List>
         {posts &&
           posts.map((post: any, index: number) => (
-            <ListItem key={index}>
-              <Inner user_id={post.user_id}>
-                {post.user_id}
-                {user.id}
+            <ListItem key={index} user_id={post.user_id}>
+              <Inner>
                 <ListHeader>
                   <Avatar userId={post.user_id} />
                   <RightArea>
