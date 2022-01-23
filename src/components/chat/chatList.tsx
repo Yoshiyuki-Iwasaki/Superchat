@@ -19,12 +19,12 @@ const ListItem = styled.li`
   display: flex;
   justify-content: ${props =>
     props.user_id == user.id ? "flex-end" : "flex-start"};
-
   &:first-child {
     margin-top: 0;
   }
 `;
 const Inner = styled.div`
+  position: relative;
   width: 300px;
 `;
 const ListHeader = styled.div`

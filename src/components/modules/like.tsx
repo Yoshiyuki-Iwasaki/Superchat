@@ -9,7 +9,7 @@ const LikeButton = styled.button<{ liked: boolean }>`
   padding: 0.5rem 0.5rem 0.5rem 1.5rem;
   position: absolute;
   background: ${({ liked }) => (liked ? "red" : "gray")};
-  bottom: 10px;
+  bottom: -30px;
   left: 0;
   border-radius: 0.4rem;
   border: none;
