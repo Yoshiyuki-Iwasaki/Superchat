@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { supabase } from "../../util/supabase";
 
 const user = supabase.auth.user();
-const getMyUserInfo = async (req: NextApiRequest, res: NextApiResponse) => {
+const myuserinfo = async (req: NextApiRequest, res: NextApiResponse) => {
   // .select();で全カラム取得、.select(カラム名)で選択も可能
   const { data, error }: any = await supabase
     .from("users")
@@ -14,4 +14,4 @@ const getMyUserInfo = async (req: NextApiRequest, res: NextApiResponse) => {
   return res.status(200).json(data);
 };
 
-export default getMyUserInfo;
+export default myuserinfo;
