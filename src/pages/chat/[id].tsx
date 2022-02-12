@@ -1,12 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../../util/supabase";
 import Layout from "../../components/layout";
-import styled from "styled-components";
 import ChatList from "../../components/organisms/chatList";
-
-export type ChatDetailType = {
-  chatData: any;
-};
+import { Title } from "./style";
+import { ChatDetailType } from "./type";
 
 const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
   return (
@@ -28,9 +25,3 @@ export async function getServerSideProps(context) {
     props: { chatData },
   };
 }
-
-const Title = styled.h2`
-  padding: 15px 0px;
-  font-size: 18px;
-  font-weight: 700;
-`;
