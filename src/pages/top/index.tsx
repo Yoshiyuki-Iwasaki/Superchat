@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../../util/supabase";
-import Layout from "../../components/layout";
+import Layout from "../../components/templates/layout";
 import { HomeType } from "./type";
 import {
   Main,
