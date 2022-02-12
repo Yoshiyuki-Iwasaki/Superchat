@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { supabase } from "../../util/supabase";
-import { Main, Inner, ButtonArea, GitHubButton, TwitterButton } from "./styles";
+import Presenter from "./presenter";
 
 const SignIn = () => {
   const handleGitHubSignIn = async e => {
@@ -28,20 +28,10 @@ const SignIn = () => {
   };
 
   return (
-    <>
-      <Main>
-        <Inner>
-          <ButtonArea>
-            <GitHubButton onClick={e => handleGitHubSignIn(e)}>
-              GitHubログイン
-            </GitHubButton>
-            <TwitterButton onClick={e => handleTwitterSignIn(e)}>
-              Twitterログイン
-            </TwitterButton>
-          </ButtonArea>
-        </Inner>
-      </Main>
-    </>
+    <Presenter
+      handleGitHubSignIn={handleGitHubSignIn}
+      handleTwitterSignIn={handleTwitterSignIn}
+    />
   );
 };
 
