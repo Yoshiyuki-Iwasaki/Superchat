@@ -1,20 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../../util/supabase";
-import Layout from "../../components/templates/layout";
 import { HomeType } from "./type";
-import {
-  Main,
-  Title,
-  Form,
-  ChatTitle,
-  Input,
-  ChaUser,
-  List,
-  ListItem,
-  Checkbox,
-  Label,
-  Button,
-} from "./style";
+import Presenter from "./presenter";
 
 const Home: React.FC<HomeType> = ({ users }) => {
   const [inputData, setInputData] = useState<any>({ title: "" });
@@ -53,37 +40,15 @@ const Home: React.FC<HomeType> = ({ users }) => {
     });
   };
   return (
-    <Layout>
-      <Main>
-        <Title>チャット作成</Title>
-        <Form onSubmit={e => createChat(e)}>
-          <ChatTitle>チャットタイトル</ChatTitle>
-          <Input
-            placeholder="title"
-            value={title}
-            onChange={e =>
-              setInputData({ ...inputData, title: e.target.value })
-            }
-          />
-          <ChaUser>ユーザー</ChaUser>
-          <List>
-            {userList &&
-              userList.map((doc: any, index: number) => (
-                <ListItem key={index}>
-                  <Checkbox
-                    id={doc.id}
-                    type="checkbox"
-                    onChange={handleChange}
-                    value={checkData}
-                  />
-                  <Label htmlFor={doc.id}>{doc.fullname}</Label>
-                </ListItem>
-              ))}
-          </List>
-          <Button onClick={e => createChat(e)}>チャット作成</Button>
-        </Form>
-      </Main>
-    </Layout>
+    <Presenter
+      createChat={createChat}
+      title={title}
+      inputData={inputData}
+      checkData={checkData}
+      setInputData={setInputData}
+      userList={userList}
+      handleChange={handleChange}
+    />
   );
 };
 
