@@ -1,17 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { supabase } from "../../util/supabase";
-import styled from "styled-components";
-
-export type ChatAvatarType = {
-  userId: any;
-};
-
-const Avatar = styled.div``;
-const Username = styled.p`
-  font-size: 12px;
-  font-weight: 700;
-`;
+import { supabase } from "../../../util/supabase";
+import { Avatar, Username } from "./style";
+import { ChatAvatarType } from "./type";
 
 const ChatAvatar: React.FC<ChatAvatarType> = ({ userId }) => {
   const [userData, setUserData] = useState([]);
