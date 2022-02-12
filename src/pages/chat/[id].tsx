@@ -1,17 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../../util/supabase";
-import Layout from "../../components/templates/layout";
-import ChatList from "../../components/organisms/chatList";
-import { Title } from "./style";
-import { ChatDetailType } from "./type";
+import Presenter from "./presenter";
+import ChatDetailType from "./type";
 
 const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
-  return (
-    <Layout>
-      <Title>{chatData.title}</Title>
-      <ChatList chatData={chatData} />
-    </Layout>
-  );
+  return <Presenter chatData={chatData} />;
 };
 
 export default ChatDetail;

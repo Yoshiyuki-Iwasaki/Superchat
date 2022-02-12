@@ -1,3 +1,5 @@
-export type ChatDetailType = {
+type ChatDetailType = {
   chatData: any;
 };
+
+export default ChatDetailType;
