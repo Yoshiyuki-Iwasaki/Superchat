@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../../util/supabase";
 import Presenter from "./presenter";
-import ChatDetailType from "./type";
+
+type ChatDetailType = {
+  chatData: any;
+};
 
 const ChatDetail: React.FC<ChatDetailType> = ({ chatData }) => {
   return <Presenter chatData={chatData} />;

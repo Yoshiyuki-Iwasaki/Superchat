@@ -1,7 +1,13 @@
 import React from "react";
 import Layout from "../../components/templates/layout";
 import ChatList from "../../components/organisms/chatList";
-import Title from "./style";
+import styled from "styled-components";
+
+const Title = styled.h2`
+  padding: 15px 0px;
+  font-size: 18px;
+  font-weight: 700;
+`;
 
 const Presenter = ({ chatData }) => {
   return (
