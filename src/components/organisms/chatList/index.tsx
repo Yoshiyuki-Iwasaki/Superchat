@@ -1,47 +1,23 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
-import { formatDate } from "../../util/date";
-import Like from "../modules/like";
-import { supabase } from "../../util/supabase";
+import { formatDate } from "../../../util/date";
+import Like from "../../atoms/like";
+import { supabase } from "../../../util/supabase";
 import router from "next/router";
-import ChatForm from "./chatForm";
-import Avatar from "./chatAvatar";
-
-export type ChatListType = {
-  chatData: any;
-};
-const user = supabase.auth.user();
-
-const List = styled.ul``;
-const ListItem = styled.li`
-  margin-top: 20px;
-  padding: 15px;
-  display: flex;
-  justify-content: ${props =>
-    props.user_id == user.id ? "flex-end" : "flex-start"};
-  &:first-child {
-    margin-top: 0;
-  }
-`;
-const Inner = styled.div`
-  position: relative;
-  width: 300px;
-`;
-const ListHeader = styled.div`
-  display: flex;
-`;
-const RightArea = styled.div`
-  margin-left: 10px;
-`;
-const Date = styled.p`
-  font-size: 11px;
-`;
-const Message = styled.p`
-  margin-top: 10px;
-  font-size: 14px;
-`;
+import ChatForm from "../../molecules/chatForm";
+import Avatar from "../../atoms/avatar";
+import { ChatListType } from "./type";
+import {
+  List,
+  ListItem,
+  Inner,
+  ListHeader,
+  RightArea,
+  Date,
+  Message,
+} from "./style";
 
 const ChatList: React.FC<ChatListType> = ({ chatData }) => {
+  const user = supabase.auth.user();
   const [posts, setPosts] = useState([]);
   const [inputData, setInputData] = useState({ message: "" });
   const { message } = inputData;
@@ -84,7 +60,7 @@ const ChatList: React.FC<ChatListType> = ({ chatData }) => {
       <List>
         {posts &&
           posts.map((post: any, index: number) => (
-            <ListItem key={index} user_id={post.user_id}>
+            <ListItem key={index} userId={user.id} post_userId={post.user_id}>
               <Inner>
                 <ListHeader>
                   <Avatar userId={post.user_id} />
