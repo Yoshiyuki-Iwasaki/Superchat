@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../../../util/supabase";
 import styled from "styled-components";
-import Layout from "../../../components/modules/layout";
+import Layout from "../../../components/layout";
 
 const Main = styled.div``;
 const Title = styled.h2`

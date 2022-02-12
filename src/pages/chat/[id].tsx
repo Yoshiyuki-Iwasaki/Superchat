@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../../util/supabase";
-import Layout from "../../components/modules/layout";
+import Layout from "../../components/layout";
 import styled from "styled-components";
-import ChatList from "../../components/chat/chatList";
+import ChatList from "../../components/organisms/chatList";
 
 export type ChatDetailType = {
   chatData: any;
