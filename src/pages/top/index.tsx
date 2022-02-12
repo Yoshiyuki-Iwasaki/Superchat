@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../../util/supabase";
-import { HomeType } from "./type";
 import Presenter from "./presenter";
+
+type HomeType = {
+  users: any;
+};
 
 const Home: React.FC<HomeType> = ({ users }) => {
   const [inputData, setInputData] = useState<any>({ title: "" });
