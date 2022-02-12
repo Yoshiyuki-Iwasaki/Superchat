@@ -1,20 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { formatDate } from "../../../util/date";
-import Like from "../../atoms/like";
 import { supabase } from "../../../util/supabase";
 import router from "next/router";
-import ChatForm from "../../molecules/chatForm";
-import Avatar from "../../atoms/avatar";
 import { ChatListType } from "./type";
-import {
-  List,
-  ListItem,
-  Inner,
-  ListHeader,
-  RightArea,
-  Date,
-  Message,
-} from "./style";
+import Presenter from "./presenter";
 
 const ChatList: React.FC<ChatListType> = ({ chatData }) => {
   const user = supabase.auth.user();
@@ -57,24 +45,9 @@ const ChatList: React.FC<ChatListType> = ({ chatData }) => {
 
   return (
     <>
-      <List>
-        {posts &&
-          posts.map((post: any, index: number) => (
-            <ListItem key={index} userId={user.id} post_userId={post.user_id}>
-              <Inner>
-                <ListHeader>
-                  <Avatar userId={post.user_id} />
-                  <RightArea>
-                    <Date>{formatDate(post.created_at)}</Date>
-                    <Message>{post.message}</Message>
-                  </RightArea>
-                </ListHeader>
-                <Like id={post.id} />
-              </Inner>
-            </ListItem>
-          ))}
-      </List>
-      <ChatForm
+      <Presenter
+        posts={posts}
+        user={user}
         inputData={inputData}
         setInputData={setInputData}
         message={message}
