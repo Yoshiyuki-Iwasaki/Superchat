@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../../../util/supabase";
-import Layout from "../../../components/templates/layout";
-import { Main, Title, Form, Input, Button } from "./style";
+import Presenter from "./presenter";
 
 const EditProfile = () => {
   const user = supabase.auth.user();
@@ -30,21 +29,12 @@ const EditProfile = () => {
   };
 
   return (
-    <Layout>
-      <Main>
-        <Title>プロフィール編集</Title>
-        <Form onSubmit={e => UpdateProfile(e)}>
-          <Input
-            placeholder="fullname"
-            value={fullname}
-            onChange={e =>
-              setInputData({ ...inputData, fullname: e.target.value })
-            }
-          />
-          <Button onClick={e => UpdateProfile(e)}>プロフィール編集</Button>
-        </Form>
-      </Main>
-    </Layout>
+    <Presenter
+      fullname={fullname}
+      UpdateProfile={UpdateProfile}
+      inputData={inputData}
+      setInputData={setInputData}
+    />
   );
 };
 
