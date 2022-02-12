@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import React from "react";
-import Header from "./header";
-import Sidebar from "./sidebar";
+import Header from "./organisms/header";
+import Sidebar from "./organisms/sidebar";
 import { RecoilRoot } from "recoil";
-import { ThemeProvider } from "../style";
+import { ThemeProvider } from "./style";
 
 export type LayoutType = {
   children: any;
