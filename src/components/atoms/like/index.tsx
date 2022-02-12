@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../../../util/supabase";
-import { LikeButton } from "./style";
 import { LikeType } from "./type";
+import Presenter from "./presenter";
 
 const Like: React.FC<LikeType> = ({ id }) => {
   const user = supabase.auth.user();
@@ -44,30 +44,30 @@ const Like: React.FC<LikeType> = ({ id }) => {
     }
   };
 
+  const RemoveLike = async () => {
+    const { error } = await supabase
+      .from("likes")
+      .delete()
+      .match({ post_id: id, user_id: user.id });
+    if (error) throw new Error();
+  };
+
+  const addLike = async () => {
+    const { error } = await supabase
+      .from("likes")
+      .insert([{ post_id: id, user_id: user.id }])
+      .single();
+    if (error) throw new Error();
+  };
+
   const clickLikeFunction = async e => {
     e.preventDefault();
     try {
-      const { error } = await supabase
-        .from("likes")
-        .insert([{ post_id: id, user_id: user.id }])
-        .single();
-      if (error) throw new Error();
-      loadingLike();
-      countLike();
-    } catch (error) {
-      alert(error.message);
-    }
-    setLiked(!liked);
-  };
-
-  const clickRemoveLikeButton = async e => {
-    e.preventDefault();
-    try {
-      const { error } = await supabase
-        .from("likes")
-        .delete()
-        .match({ post_id: id, user_id: user.id });
-      if (error) throw new Error();
+      if (liked) {
+        RemoveLike();
+      } else {
+        addLike();
+      }
       loadingLike();
       countLike();
     } catch (error) {
@@ -77,17 +77,11 @@ const Like: React.FC<LikeType> = ({ id }) => {
   };
   return (
     <>
-      <>
-        {!done ? (
-          <LikeButton liked={liked} onClick={e => clickLikeFunction(e)}>
-            {likeCount}
-          </LikeButton>
-        ) : (
-          <LikeButton liked={liked} onClick={e => clickRemoveLikeButton(e)}>
-            {likeCount}
-          </LikeButton>
-        )}
-      </>
+      <Presenter
+        liked={liked}
+        likeCount={likeCount}
+        onClick={e => clickLikeFunction(e)}
+      />
     </>
   );
 };
