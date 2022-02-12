@@ -1,52 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { supabase } from "../util/supabase";
-import Layout from "../components/layout";
-import styled from "styled-components";
-
-export type HomeType = {
-  users: any;
-};
-
-const Main = styled.div``;
-const Title = styled.h2`
-  padding: 15px 0;
-  font-size: 18px;
-  font-weight: 700;
-`;
-const Form = styled.form`
-  margin-top: 15px;
-`;
-const ChatTitle = styled.p`
-  font-size: 14px;
-`;
-const ChaUser = styled.p`
-  margin-top: 10px;
-  font-size: 14px;
-`;
-const Input = styled.input`
-  margin-top: 10px;
-  font-size: 14px;
-`;
-const List = styled.ul`
-  margin-top: 10px;
-`;
-const ListItem = styled.li`
-  margin-top: 10px;
-  display: flex;
-  align-items: center;
-`;
-const Checkbox = styled.input``;
-const Label = styled.label`
-  margin-left: 10px;
-  font-size: 14px;
-`;
-const Button = styled.button`
-  margin-top: 10px;
-  padding: 5px 10px;
-  background: #2b3a42;
-  font-size: 14px;
-  color: #f3f3f3;
-`;
+import { supabase } from "../../util/supabase";
+import Layout from "../../components/layout";
+import { HomeType } from "./type";
+import {
+  Main,
+  Title,
+  Form,
+  ChatTitle,
+  Input,
+  ChaUser,
+  List,
+  ListItem,
+  Checkbox,
+  Label,
+  Button,
+} from "./style";
 
 const Home: React.FC<HomeType> = ({ users }) => {
   const [inputData, setInputData] = useState<any>({ title: "" });
