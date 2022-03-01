@@ -1,12 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
+import React from 'react';
 import Presenter from './presenter';
 
 const Header = () => {
-  const [userList, setUserList] = useState([]);
-  const router = useRouter();
-
-  return <Presenter userList={userList} />;
+  return <Presenter />;
 };
 
 export default Header;

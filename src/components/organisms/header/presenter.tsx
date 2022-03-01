@@ -17,7 +17,7 @@ import {
   Button,
 } from './style';
 
-const Presenter = ({ userList }) => {
+const Presenter = () => {
   return (
     <HeaderLayout>
       <Inner>
@@ -30,11 +30,6 @@ const Presenter = ({ userList }) => {
           <Hover>
             <Avatar>
               <Image src={`/avatar.png`} width={40} height={40} />
-              {userList[0] && (
-                <UserName>
-                  {userList[0].fullname ? userList[0].fullname : 'noname'}
-                </UserName>
-              )}
             </Avatar>
           </Hover>
         </RightArea>

@@ -1,10 +1,10 @@
-import React from "react";
-import { LikeButton } from "./style";
+import React from 'react';
+import { LikeButton } from './style';
 
-const Presenter = ({ liked, likeCount, onClick }) => {
+const Presenter = ({ liked, count, onClick }) => {
   return (
     <LikeButton liked={liked} onClick={onClick}>
-      {likeCount}
+      {count}
     </LikeButton>
   );
 };
