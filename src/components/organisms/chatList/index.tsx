@@ -5,7 +5,7 @@ import Presenter from './presenter';
 import chat from '../../../../chatData.json';
 
 const ChatList: React.FC = () => {
-  const [inputData, setInputData] = useState({ message: '' });
+  const [inputData, setInputData] = useState<string>();
   const [chatData, setChatData] = useState(chat);
 
   return (

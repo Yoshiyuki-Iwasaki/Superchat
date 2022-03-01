@@ -6,10 +6,6 @@ const Header = () => {
   const [userList, setUserList] = useState([]);
   const router = useRouter();
 
-  const signOut = () => {
-    router.push('./signin');
-  };
-
   return <Presenter userList={userList} />;
 };
 
