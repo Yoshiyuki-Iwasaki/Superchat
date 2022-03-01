@@ -36,13 +36,6 @@ const Presenter = ({ userList }) => {
                 </UserName>
               )}
             </Avatar>
-            <List>
-              <ListItem>
-                <Link href="/profile/edit" as="/profile/edit" passHref>
-                  <LinkText>プロフィール編集</LinkText>
-                </Link>
-              </ListItem>
-            </List>
           </Hover>
         </RightArea>
       </Inner>
