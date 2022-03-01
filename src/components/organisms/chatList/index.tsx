@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import router from 'next/router';
-import { ChatListType } from './type';
+import React, { useState } from 'react';
 import Presenter from './presenter';
 import chat from '../../../../chatData.json';
 

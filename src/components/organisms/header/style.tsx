@@ -9,7 +9,6 @@ export const Inner = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1000px;
   height: 60px;
 `;
 export const Title = styled.h1``;
