@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const HeaderLayout = styled.header`
   background: #2b3a42;
@@ -14,9 +14,10 @@ export const Inner = styled.div`
 `;
 export const Title = styled.h1``;
 export const Logo = styled.a`
-  font-size: 26px;
+  font-size: 22px;
   font-weight: 700;
   color: #f3f3f3;
+  letter-spacing: 0.01em;
 `;
 export const RightArea = styled.div`
   display: flex;

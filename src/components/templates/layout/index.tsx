@@ -1,18 +1,14 @@
 import React from 'react';
 import Header from '../../organisms/header';
-import { Main, Inner, Content } from './style';
+import { Wrapper, Content } from './style';
 import { LayoutType } from './type';
 
 const Layout: React.FC<LayoutType> = ({ children }) => {
   return (
-    <>
+    <Wrapper>
       <Header />
-      <Main>
-        <Inner>
-          <Content>{children}</Content>
-        </Inner>
-      </Main>
-    </>
+      <Content>{children}</Content>
+    </Wrapper>
   );
 };
 
