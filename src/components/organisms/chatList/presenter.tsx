@@ -20,7 +20,7 @@ const Presenter = ({ chatData, inputData, setInputData, message }) => {
           <ListItem key={index} post_userId={post.user_id}>
             <Inner>
               <ListHeader>
-                <Avatar userId={post.user_id} />
+                <Avatar />
                 <RightArea>
                   <Date>{post.created_at}</Date>
                   <Message>{post.message}</Message>
