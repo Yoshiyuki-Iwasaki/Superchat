@@ -2,19 +2,19 @@ import React, { useState, useEffect } from 'react';
 import router from 'next/router';
 import { ChatListType } from './type';
 import Presenter from './presenter';
-import chatData from '../../../../chatData.json';
+import chat from '../../../../chatData.json';
 
 const ChatList: React.FC = () => {
   const [inputData, setInputData] = useState({ message: '' });
-  const { message } = inputData;
+  const [chatData, setChatData] = useState(chat);
 
   return (
     <>
       <Presenter
         chatData={chatData}
+        setChatData={setChatData}
         inputData={inputData}
         setInputData={setInputData}
-        message={message}
       />
     </>
   );

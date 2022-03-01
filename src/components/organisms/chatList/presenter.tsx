@@ -12,7 +12,7 @@ import ChatForm from '../../atoms/Input';
 import Avatar from '../../atoms/avatar';
 import Like from '../../atoms/like';
 
-const Presenter = ({ chatData, inputData, setInputData, message }) => {
+const Presenter = ({ chatData, setChatData, inputData, setInputData }) => {
   return (
     <>
       <List>
@@ -32,9 +32,10 @@ const Presenter = ({ chatData, inputData, setInputData, message }) => {
         ))}
       </List>
       <ChatForm
+        chatData={chatData}
+        setChatData={setChatData}
         inputData={inputData}
         setInputData={setInputData}
-        message={message}
       />
     </>
   );
