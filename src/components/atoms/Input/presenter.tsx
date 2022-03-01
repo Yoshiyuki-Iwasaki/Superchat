@@ -1,9 +1,9 @@
 import React from 'react';
 import { Form, Input, Button } from './style';
 
-const Presenter = ({ message, handleChange }) => {
+const Presenter = ({ message, handleChange, handleSubmit }) => {
   return (
-    <Form onSubmit={(e) => console.log('test')}>
+    <Form onSubmit={(e) => handleSubmit(e)}>
       <Input
         placeholder="message"
         value={message}
