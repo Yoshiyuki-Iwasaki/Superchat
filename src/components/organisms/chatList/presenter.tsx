@@ -7,6 +7,7 @@ import {
   RightArea,
   Date,
   Message,
+  LikeArea,
 } from './style';
 import ChatForm from '../../atoms/Input';
 import Avatar from '../../atoms/avatar';
@@ -26,7 +27,9 @@ const Presenter = ({ chatData, setChatData, inputData, setInputData }) => {
                   <Message>{post.message}</Message>
                 </RightArea>
               </ListHeader>
-              <Like id={post.id} />
+              <LikeArea>
+                <Like />
+              </LikeArea>
             </Inner>
           </ListItem>
         ))}

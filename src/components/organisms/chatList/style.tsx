@@ -34,3 +34,8 @@ export const Message = styled.p`
   font-size: 12px;
   line-height: 1.4;
 `;
+export const LikeArea = styled.div`
+  position: absolute;
+  bottom: -30px;
+  left: 0;
+`;
