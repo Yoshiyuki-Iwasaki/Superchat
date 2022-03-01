@@ -1,15 +1,14 @@
-import React from "react";
-import { Form, Input, Button } from "./style";
+import React from 'react';
+import { Form, Input, Button } from './style';
 
-const Presenter = ({ createPost, message, handleChange }) => {
+const Presenter = ({ message, handleChange }) => {
   return (
-    <Form onSubmit={e => createPost(e)}>
+    <Form onSubmit={(e) => console.log('test')}>
       <Input
         placeholder="message"
         value={message}
-        onChange={e => handleChange(e)}
+        onChange={(e) => handleChange(e)}
       />
-      <Button onClick={e => createPost(e)}>Create Post</Button>
     </Form>
   );
 };

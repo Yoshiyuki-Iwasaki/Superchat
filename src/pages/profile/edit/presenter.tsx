@@ -1,6 +1,6 @@
-import React from "react";
-import Layout from "../../../components/templates/layout";
-import styled from "styled-components";
+import React from 'react';
+import Layout from '../../../components/templates/layout';
+import styled from 'styled-components';
 
 const Main = styled.div``;
 const Title = styled.h2`
@@ -22,20 +22,20 @@ const Button = styled.button`
   color: #f3f3f3;
 `;
 
-const Presenter = ({ fullname, UpdateProfile, inputData, setInputData }) => {
+const Presenter = ({ fullname, inputData, setInputData }) => {
   return (
     <Layout>
       <Main>
         <Title>プロフィール編集</Title>
-        <Form onSubmit={e => UpdateProfile(e)}>
+        <Form onSubmit={(e) => console.log('test')}>
           <Input
             placeholder="fullname"
             value={fullname}
-            onChange={e =>
+            onChange={(e) =>
               setInputData({ ...inputData, fullname: e.target.value })
             }
           />
-          <Button onClick={e => UpdateProfile(e)}>プロフィール編集</Button>
+          <Button onClick={(e) => console.log('test')}>プロフィール編集</Button>
         </Form>
       </Main>
     </Layout>

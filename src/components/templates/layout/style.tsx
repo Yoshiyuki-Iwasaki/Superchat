@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Main = styled.div`
   height: calc(100vh - 60px);
@@ -12,6 +12,5 @@ export const Inner = styled.div`
 `;
 export const Content = styled.div`
   padding: 0 15px;
-  width: calc(100% - (100% / 5));
   box-sizing: border-box;
 `;

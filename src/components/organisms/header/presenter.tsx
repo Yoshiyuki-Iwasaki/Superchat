@@ -1,6 +1,6 @@
-import React from "react";
-import Link from "next/link";
-import Image from "next/image";
+import React from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import {
   HeaderLayout,
   Inner,
@@ -15,9 +15,9 @@ import {
   ListItem,
   LinkText,
   Button,
-} from "./style";
+} from './style';
 
-const Presenter = ({ setTheme, theme, userList, signOut }) => {
+const Presenter = ({ userList }) => {
   return (
     <HeaderLayout>
       <Inner>
@@ -27,15 +27,12 @@ const Presenter = ({ setTheme, theme, userList, signOut }) => {
           </Link>
         </Title>
         <RightArea>
-          <DarkmodeButton onClick={setTheme}>
-            {theme.type === "light" ? "🌚" : "🌝"}
-          </DarkmodeButton>
           <Hover>
             <Avatar>
               <Image src={`/avatar.png`} width={40} height={40} />
               {userList[0] && (
                 <UserName>
-                  {userList[0].fullname ? userList[0].fullname : "noname"}
+                  {userList[0].fullname ? userList[0].fullname : 'noname'}
                 </UserName>
               )}
             </Avatar>
@@ -44,9 +41,6 @@ const Presenter = ({ setTheme, theme, userList, signOut }) => {
                 <Link href="/profile/edit" as="/profile/edit" passHref>
                   <LinkText>プロフィール編集</LinkText>
                 </Link>
-              </ListItem>
-              <ListItem>
-                <Button onClick={signOut}>ログアウト</Button>
               </ListItem>
             </List>
           </Hover>
