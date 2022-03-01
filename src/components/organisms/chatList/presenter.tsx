@@ -8,7 +8,7 @@ import {
   Date,
   Message,
 } from './style';
-import ChatForm from '../../molecules/chatForm';
+import ChatForm from '../../atoms/Input';
 import Avatar from '../../atoms/avatar';
 import Like from '../../atoms/like';
 
