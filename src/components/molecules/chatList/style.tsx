@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+export const Main = styled.div`
+  width: 75%;
+`;
+
 export const List = styled.ul`
   height: calc(100% - 68px);
   overflow: scroll;
