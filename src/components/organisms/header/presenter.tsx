@@ -7,14 +7,8 @@ import {
   Title,
   Logo,
   RightArea,
-  DarkmodeButton,
   Hover,
   Avatar,
-  UserName,
-  List,
-  ListItem,
-  LinkText,
-  Button,
 } from './style';
 
 const Presenter = () => {
