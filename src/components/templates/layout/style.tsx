@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
 
 export const Content = styled.div`
   padding: 15px;
+  display:flex;
   height: calc(100% - 60px);
   box-sizing: border-box;
 `;
