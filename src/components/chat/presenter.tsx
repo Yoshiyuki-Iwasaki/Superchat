@@ -1,13 +1,15 @@
 import React from 'react';
 import { List, Main } from './style';
-import ChatForm from '../../atoms/Input';
-import ChatList from '../../molecules/chatList';
+import ChatForm from '../Input';
+import ChatListItem from '../chatItem';
 
 const Presenter = ({ chatData, setChatData, inputData, setInputData }) => {
   return (
     <Main>
       <List>
-        <ChatList chatData={chatData} />
+        {chatData.map((post: any, index: number) => (
+          <ChatListItem key={index} post={post} />
+        ))}
       </List>
       <ChatForm
         chatData={chatData}

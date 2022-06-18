@@ -1,8 +1,8 @@
 import React from 'react';
 import { Main } from './style';
 
-const Presenter = () => {
-  return <Main>Sidebar</Main>;
+const Presenter = ({ children }) => {
+  return <Main>{children}</Main>;
 };
 
 export default Presenter;

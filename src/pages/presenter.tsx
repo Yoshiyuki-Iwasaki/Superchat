@@ -1,7 +1,7 @@
 import React from 'react';
-import Layout from '../components/templates/layout';
-import ChatList from '../components/organisms/chat';
-import Sidebar from '../components/organisms/sidebar';
+import Layout from '../components/layout';
+import ChatList from '../components/chat';
+import Sidebar from '../components/sidebar';
 
 const Presenter = () => {
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Presenter from './presenter';
-import chat from '../../../../chatData.json';
+import chat from '../../../chatData.json';
 
 const ChatList: React.FC = () => {
   const [inputData, setInputData] = useState<string>();

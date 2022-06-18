@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from '../../organisms/header';
+import Header from '../header';
 import { Wrapper, Content } from './style';
 import { LayoutType } from './type';
 

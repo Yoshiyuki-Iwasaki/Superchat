@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Main = styled.div`
-  width: 75%;
+  width: calc(100% - 150px);
 `;
 
 export const List = styled.ul`
